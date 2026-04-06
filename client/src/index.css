@@ -1,0 +1,217 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Cores Qualital */
+  --color-qualital-blue: #00488d;
+  --color-qualital-cyan: #00aeef;
+  --color-qualital-green: #8dc63f;
+
+  /* Cores para status de tickets */
+  --color-status-aberto: #00488d;
+  --color-status-em-andamento: #00aeef;
+  --color-status-aguardando: #f9b233;
+  --color-status-resolvido: #8dc63f;
+  --color-status-fechado: #94a3b8;
+
+  /* Cores para prioridade */
+  --color-priority-baixa: #00aeef;
+  --color-priority-media: #f9b233;
+  --color-priority-alta: #f97316;
+  --color-priority-urgente: #dc2626;
+}
+
+:root {
+  /* Cores Qualital - #00488d (azul escuro), #00aeef (azul claro/ciano), #8dc63f (verde), #f2f2f2 (cinza claro) */
+  --primary: #00488d; /* azul médio/escuro Qualital */
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #003366; /* azul marinho Qualital */
+  --sidebar-primary-foreground: #ffffff;
+  --chart-1: #00488d;
+  --chart-2: #00aeef;
+  --chart-3: #8dc63f;
+  --chart-4: #003366;
+  --chart-5: #f9b233; /* Amarelo Qualital (opcional) */
+  --radius: 0.65rem;
+  --background: #ffffff;
+  --foreground: #1c1c1c;
+  --card: #ffffff;
+  --card-foreground: #1c1c1c;
+  --popover: #ffffff;
+  --popover-foreground: #1c1c1c;
+  --secondary: #f8fafc;
+  --secondary-foreground: #64748b;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #00488d;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1c1c1c;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #0f172a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #00488d;
+
+  /* Status de tickets - usando cores Qualital */
+  --status-aberto: #00488d;
+  --status-em-andamento: #00aeef;
+  --status-aguardando: #f9b233;
+  --status-resolvido: #8dc63f;
+  --status-fechado: #94a3b8;
+
+  /* Prioridades */
+  --priority-baixa: #00aeef;
+  --priority-media: #f9b233;
+  --priority-alta: #f97316;
+  --priority-urgente: #dc2626;
+
+  /* Qualital Brand Colors */
+  --qualital-blue: 211 100% 28%; /* #00488d */
+  --qualital-cyan: 196 100% 47%; /* #00aeef */
+  --qualital-green: 85 55% 51%; /* #8dc63f */
+}
+
+.dark {
+  --primary: #1d4ed8;
+  --primary-foreground: #eff6ff;
+  --sidebar-primary: #3b82f6;
+  --sidebar-primary-foreground: #eff6ff;
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
+  --secondary: #334155;
+  --secondary-foreground: #cbd5e1;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --accent: #334155;
+  --accent-foreground: #f8fafc;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #2563eb;
+  --chart-1: #93c5fd;
+  --chart-2: #3b82f6;
+  --chart-3: #2563eb;
+  --chart-4: #1d4ed8;
+  --chart-5: #1e40af;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #2563eb;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
+
+
+

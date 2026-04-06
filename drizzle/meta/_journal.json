@@ -1,0 +1,16 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1765918503348,
+      "tag": "0000_clean_ezekiel_stane",
+      "breakpoints": true
+    }
+  ]
+}
+
+
+
