@@ -490,16 +490,16 @@ function HeaderLogo({ expanded }: { expanded: boolean }) {
     <>
       <div
         className={cn(
-          "flex flex-col gap-2 overflow-hidden transition-all duration-300 absolute left-6 top-1/2 -translate-y-1/2",
+          "flex flex-col items-center gap-2 overflow-hidden transition-all duration-300 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
           expanded ? "opacity-100 w-[calc(100%-32px)] delay-100" : "opacity-0 w-0 pointer-events-none"
         )}
       >
         <img
           src="/logo-qualital.png"
           alt="Qualital Logo"
-          className="h-16 object-contain self-start drop-shadow-sm"
+          className="h-20 object-contain drop-shadow-sm"
         />
-        <span className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/80 uppercase tracking-widest whitespace-nowrap pl-1 drop-shadow-sm">
+        <span className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/80 uppercase tracking-widest whitespace-nowrap drop-shadow-sm text-center">
           Sistema Interno Ouvidoria
         </span>
       </div>
