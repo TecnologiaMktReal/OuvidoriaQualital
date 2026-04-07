@@ -381,7 +381,7 @@ export default function Sidebar() {
             <HeaderLogo expanded={expanded} />
             <button
               onClick={() => setExpanded((c) => !c)}
-              className="p-1.5 rounded-full bg-qualital-blue hover:bg-qualital-blue/90 text-white transition-all absolute -right-3 top-1/2 -translate-y-1/2 shadow-lg border border-white z-20 hover:scale-110"
+              className="p-1.5 rounded-full bg-primary hover:bg-primary/90 text-white transition-all absolute -right-3 top-1/2 -translate-y-1/2 shadow-lg border border-white z-20 hover:scale-110"
               aria-label="Alternar menu"
             >
               {expanded ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
@@ -472,13 +472,13 @@ export default function Sidebar() {
 function BackgroundFX() {
   return (
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-      <svg className="absolute -top-10 -left-10 w-64 h-64 text-qualital-cyan/20 animate-spin-slow blur-xl" viewBox="0 0 100 100" fill="currentColor">
+      <svg className="absolute -top-10 -left-10 w-64 h-64 text-primary/80/20 animate-spin-slow blur-xl" viewBox="0 0 100 100" fill="currentColor">
         <path d="M50 0 L100 100 L0 100 Z" />
       </svg>
-      <svg className="absolute top-1/3 -right-20 w-80 h-80 text-qualital-green/10 animate-spin-slower blur-xl" viewBox="0 0 100 100" fill="currentColor">
+      <svg className="absolute top-1/3 -right-20 w-80 h-80 text-primary/10 animate-spin-slower blur-xl" viewBox="0 0 100 100" fill="currentColor">
         <path d="M50 0 L100 100 L0 100 Z" />
       </svg>
-      <svg className="absolute -bottom-20 -left-10 w-96 h-96 text-qualital-blue/20 animate-spin-slow blur-2xl" viewBox="0 0 100 100" fill="currentColor">
+      <svg className="absolute -bottom-20 -left-10 w-96 h-96 text-primary/20 animate-spin-slow blur-2xl" viewBox="0 0 100 100" fill="currentColor">
         <path d="M50 0 L100 100 L0 100 Z" />
       </svg>
     </div>
@@ -499,7 +499,7 @@ function HeaderLogo({ expanded }: { expanded: boolean }) {
           alt="Qualital Logo"
           className="h-16 object-contain self-start drop-shadow-sm"
         />
-        <span className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-qualital-blue to-qualital-cyan uppercase tracking-widest whitespace-nowrap pl-1 drop-shadow-sm">
+        <span className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/80 uppercase tracking-widest whitespace-nowrap pl-1 drop-shadow-sm">
           Sistema Interno Ouvidoria
         </span>
       </div>
@@ -558,14 +558,14 @@ function SidebarItem({
       className={cn(
         baseClasses,
         isActive
-          ? "bg-gradient-to-r from-qualital-blue to-qualital-blue/90 text-white shadow-md shadow-qualital-blue/20"
-          : "text-slate-500 hover:bg-slate-100 hover:text-qualital-blue",
+          ? "bg-gradient-to-r from-primary to-primary/90 text-white shadow-md shadow-primary/20"
+          : "text-slate-500 hover:bg-slate-100 hover:text-primary",
         !expanded && "justify-center"
       )}
       onClick={handleClick}
       title={!expanded ? item.name : undefined}
     >
-      <span className={cn(isActive ? "text-white" : "text-slate-400 group-hover:text-qualital-blue", "transition-colors duration-200")}>
+      <span className={cn(isActive ? "text-white" : "text-slate-400 group-hover:text-primary", "transition-colors duration-200")}>
         <item.icon className="h-5 w-5" />
       </span>
       <span className={cn("overflow-hidden transition-all duration-300 ease-in-out", expanded ? "w-44 ml-3 opacity-100" : "w-0 ml-0 opacity-0")}>
@@ -575,7 +575,7 @@ function SidebarItem({
       {expanded && (
         <div className="absolute right-3 flex items-center gap-2">
           {item.inDevelopment && !hasSubmenu && (
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider bg-yellow-500/20 text-qualital-cyan">DEV</span>
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider bg-yellow-500/20 text-primary/80">DEV</span>
           )}
           {badge !== undefined && badge !== null && (
             <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.1)]">
@@ -583,7 +583,7 @@ function SidebarItem({
             </span>
           )}
           {hasSubmenu && (
-            <ChevronDown size={14} className={cn("transition-transform duration-300", isOpen ? "rotate-180 text-qualital-cyan" : "text-slate-400")} />
+            <ChevronDown size={14} className={cn("transition-transform duration-300", isOpen ? "rotate-180 text-primary/80" : "text-slate-400")} />
           )}
         </div>
       )}
@@ -634,7 +634,7 @@ function NestedSubmenu({ item, currentPath }: { item: NavItem; currentPath: stri
         onClick={() => setOpen((v) => !v)}
       >
         <div className="flex items-center gap-3">
-          <span className="text-slate-500 group-hover:text-qualital-cyan transition-colors">
+          <span className="text-slate-500 group-hover:text-primary/80 transition-colors">
             <item.icon className="h-4 w-4" />
           </span>
           <span className={cn(!expanded && "sr-only")}>{item.name}</span>
@@ -643,7 +643,7 @@ function NestedSubmenu({ item, currentPath }: { item: NavItem; currentPath: stri
           size={14}
           className={cn(
             "transition-transform duration-300",
-            open ? "rotate-180 text-qualital-cyan" : "text-slate-400"
+            open ? "rotate-180 text-primary/80" : "text-slate-400"
           )}
         />
       </button>
@@ -684,7 +684,7 @@ function SubItem({ item, isActive }: { item: NavItem; isActive: boolean }) {
         )}
       >
         <div className="flex items-center gap-3">
-          <span className="text-slate-500 group-hover:text-qualital-cyan transition-colors">
+          <span className="text-slate-500 group-hover:text-primary/80 transition-colors">
             <item.icon className="h-4 w-4" />
           </span>
           <span className={cn(!expanded && "sr-only")}>{item.name}</span>

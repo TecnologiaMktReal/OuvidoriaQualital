@@ -161,7 +161,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full relative flex items-center justify-center overflow-hidden bg-slate-50 font-sans selection:bg-qualital-green selection:text-white">
+    <div className="min-h-screen w-full relative flex items-center justify-center overflow-hidden bg-slate-50 font-sans selection:bg-primary selection:text-white">
       {/* Fundo dinâmico (Clean) */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-slate-100 via-white to-slate-50" />
@@ -178,12 +178,12 @@ const Login = () => {
         <motion.div 
             animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 10, repeat: Infinity }}
-            className="absolute top-20 right-[15%] w-96 h-96 bg-qualital-blue/5 rounded-full blur-3xl" 
+            className="absolute top-20 right-[15%] w-96 h-96 bg-primary/5 rounded-full blur-3xl" 
         />
         <motion.div 
             animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 15, repeat: Infinity, delay: 2 }}
-            className="absolute bottom-20 left-[10%] w-[30rem] h-[30rem] bg-qualital-green/5 rounded-full blur-3xl" 
+            className="absolute bottom-20 left-[10%] w-[30rem] h-[30rem] bg-primary/5 rounded-full blur-3xl" 
         />
       </div>
 
@@ -196,17 +196,17 @@ const Login = () => {
           transition={{ duration: 0.8 }}
           className="hidden lg:block flex-1 text-slate-900 space-y-6"
         >
-          <div className="inline-flex items-center space-x-2 bg-qualital-blue/10 px-4 py-2 rounded-full border border-qualital-blue/10 backdrop-blur-md">
-            <ShieldCheck className="w-4 h-4 text-qualital-blue" />
-            <span className="text-sm font-bold tracking-wide text-qualital-blue uppercase">Segurança Qualital</span>
+          <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/10 backdrop-blur-md">
+            <ShieldCheck className="w-4 h-4 text-primary" />
+            <span className="text-sm font-bold tracking-wide text-primary uppercase">Segurança Qualital</span>
           </div>
 
           <h1 className="text-7xl font-black tracking-tight leading-tight text-slate-900">
             Excelência <br />
-            em <span className="text-transparent bg-clip-text bg-gradient-to-r from-qualital-blue to-qualital-cyan">Gestão</span>.
+            em <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/80">Gestão</span>.
           </h1>
 
-          <p className="text-xl text-slate-500 max-w-lg leading-relaxed border-l-4 border-qualital-green pl-4">
+          <p className="text-xl text-slate-500 max-w-lg leading-relaxed border-l-4 border-primary pl-4">
             Acesse a plataforma oficial de Ouvidoria e Atendimento Qualital para gerenciar manifestações com eficiência.
           </p>
         </motion.div>
@@ -242,7 +242,7 @@ const Login = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-qualital-blue/20 focus:border-qualital-blue transition-all font-sans"
+                    className="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-sans"
                     placeholder="seu@e-mail.com.br"
                     required
                   />
@@ -252,7 +252,7 @@ const Login = () => {
               {mode !== "forgot" && (
                 <div className="space-y-2">
                   <div className="flex justify-between items-center ml-1">
-                    <label className="text-xs uppercase font-bold text-qualital-cyan tracking-wider">Senha</label>
+                    <label className="text-xs uppercase font-bold text-primary/80 tracking-wider">Senha</label>
                   </div>
                   <div className="relative group/input">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
@@ -262,7 +262,7 @@ const Login = () => {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="block w-full pl-12 pr-12 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-qualital-blue/20 focus:border-qualital-blue transition-all font-sans"
+                      className="block w-full pl-12 pr-12 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-sans"
                       placeholder="••••••••"
                       required
                     />
@@ -279,7 +279,7 @@ const Login = () => {
                       <button
                         type="button"
                         onClick={() => switchMode("forgot")}
-                        className="text-[10px] uppercase font-bold text-qualital-blue/70 hover:text-qualital-blue tracking-wider transition-colors"
+                        className="text-[10px] uppercase font-bold text-primary/70 hover:text-primary tracking-wider transition-colors"
                       >
                         Esqueceu sua senha?
                       </button>
@@ -299,7 +299,7 @@ const Login = () => {
                       type="password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
-                      className="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-qualital-blue/20 focus:border-qualital-blue transition-all font-sans"
+                      className="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-sans"
                       placeholder="Repita sua senha"
                       required
                     />
@@ -313,7 +313,7 @@ const Login = () => {
                 type="submit"
                 disabled={loading}
                 className={`w-full py-4 px-6 rounded-xl font-bold text-white text-lg relative overflow-hidden group transition-all duration-300 ${
-                  isSuccess ? "bg-qualital-green" : "bg-gradient-to-r from-qualital-blue to-blue-900"
+                  isSuccess ? "bg-primary" : "bg-gradient-to-r from-primary to-primary/80"
                 }`}
               >
                 <div className="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:animate-[shimmer_1.5s_infinite]" />

@@ -110,10 +110,10 @@ const Auth = () => {
           />
         </div>
         <div className="text-center mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <h1 className="text-2xl md:text-3xl font-bold text-qualital-blue tracking-wide">
+          <h1 className="text-2xl md:text-3xl font-bold text-primary tracking-wide">
             Sistema de Ouvidoria Qualital
           </h1>
-          <div className="w-20 h-1 bg-qualital-cyan mx-auto mt-3 rounded-full" />
+          <div className="w-20 h-1 bg-primary/80 mx-auto mt-3 rounded-full" />
         </div>
         <div 
           className="w-full max-w-md bg-white border border-slate-200 rounded-2xl shadow-2xl p-8 animate-fade-in"
@@ -138,7 +138,7 @@ const Auth = () => {
                   placeholder="nome@Qualital.com.br"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10 h-12 border-qualital-blue/20 focus:border-qualital-cyan"
+                  className="pl-10 h-12 border-primary/20 focus:border-primary/80"
                   required
                 />
               </div>
@@ -147,7 +147,7 @@ const Auth = () => {
               <div className="flex items-center justify-between">
                 <Label htmlFor="password">Senha</Label>
                 {isLogin && (
-                  <button type="button" className="text-sm text-qualital-cyan hover:underline">
+                  <button type="button" className="text-sm text-primary/80 hover:underline">
                     Esqueceu a senha?
                   </button>
                 )}
@@ -160,7 +160,7 @@ const Auth = () => {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 h-12 border-qualital-blue/20 focus:border-qualital-cyan"
+                  className="pl-10 h-12 border-primary/20 focus:border-primary/80"
                   required
                 />
               </div>
@@ -168,7 +168,7 @@ const Auth = () => {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-qualital-blue hover:bg-qualital-blue/90 text-white rounded-full py-6 text-base font-medium shadow-lg hover:shadow-xl transition-all"
+              className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 text-base font-medium shadow-lg hover:shadow-xl transition-all"
             >
               {loading ? "Carregando..." : isLogin ? "Entrar" : "Criar conta"}
               <ArrowRight className="ml-2 h-5 w-5" />

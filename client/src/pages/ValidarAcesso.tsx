@@ -183,7 +183,7 @@ export default function ValidarAcesso() {
   };
 
   return (
-    <div className="min-h-screen w-full relative flex items-center justify-center overflow-hidden bg-slate-50 font-sans selection:bg-qualital-blue selection:text-white">
+    <div className="min-h-screen w-full relative flex items-center justify-center overflow-hidden bg-slate-50 font-sans selection:bg-primary selection:text-white">
       {/* Fundo dinâmico (Clean) */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-slate-100 via-white to-slate-50" />
@@ -197,12 +197,12 @@ export default function ValidarAcesso() {
         <motion.div 
             animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 10, repeat: Infinity }}
-            className="absolute top-20 right-[15%] w-96 h-96 bg-qualital-blue/5 rounded-full blur-3xl" 
+            className="absolute top-20 right-[15%] w-96 h-96 bg-primary/5 rounded-full blur-3xl" 
         />
         <motion.div 
             animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 15, repeat: Infinity, delay: 2 }}
-            className="absolute bottom-20 left-[10%] w-[30rem] h-[30rem] bg-qualital-green/5 rounded-full blur-3xl" 
+            className="absolute bottom-20 left-[10%] w-[30rem] h-[30rem] bg-primary/5 rounded-full blur-3xl" 
         />
       </div>
 
@@ -231,7 +231,7 @@ export default function ValidarAcesso() {
 
           <div className="relative z-10">
             {loading ? (
-              <div className="flex flex-col items-center justify-center py-12 space-y-4 text-qualital-blue font-sans">
+              <div className="flex flex-col items-center justify-center py-12 space-y-4 text-primary font-sans">
                 <Loader2 className="w-12 h-12 animate-spin" />
                 <span className="text-sm font-medium animate-pulse uppercase tracking-widest text-xs">Sincronizando...</span>
               </div>
@@ -242,7 +242,7 @@ export default function ValidarAcesso() {
                 </div>
                 <button
                    onClick={() => window.location.href = "/auth"}
-                   className="text-qualital-blue hover:text-qualital-blue/80 transition-colors text-xs font-bold uppercase tracking-[0.2em] pt-2"
+                   className="text-primary hover:text-primary/80 transition-colors text-xs font-bold uppercase tracking-[0.2em] pt-2"
                 >
                   Voltar para o Login
                 </button>
@@ -259,7 +259,7 @@ export default function ValidarAcesso() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="block w-full pl-12 pr-12 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-qualital-blue/20 focus:border-qualital-blue transition-all font-sans"
+                      className="block w-full pl-12 pr-12 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-sans"
                       placeholder="••••••••"
                       required
                     />
@@ -283,7 +283,7 @@ export default function ValidarAcesso() {
                       type="password"
                       value={passwordConfirm}
                       onChange={(e) => setPasswordConfirm(e.target.value)}
-                      className="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-qualital-blue/20 focus:border-qualital-blue transition-all font-sans"
+                      className="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-sans"
                       placeholder="Repita a senha"
                       required
                     />
@@ -296,7 +296,7 @@ export default function ValidarAcesso() {
                   type="submit"
                   disabled={submitting}
                   className={`w-full py-4 px-6 rounded-xl font-bold text-white text-lg relative overflow-hidden group transition-all duration-300 ${
-                    isSuccess ? "bg-qualital-green" : "bg-gradient-to-r from-qualital-blue to-qualital-blue/90"
+                    isSuccess ? "bg-primary" : "bg-gradient-to-r from-primary to-primary/90"
                   }`}
                 >
                   <div className="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:animate-[shimmer_1.5s_infinite]" />
@@ -326,7 +326,7 @@ export default function ValidarAcesso() {
 
             <div className="mt-8 pt-6 border-t border-slate-100 text-center">
               <div className="flex items-center justify-center space-x-2 text-slate-400 text-xs uppercase tracking-widest font-bold">
-                <ShieldCheck className="w-4 h-4 text-qualital-green" />
+                <ShieldCheck className="w-4 h-4 text-primary" />
                 <span>Segurança Qualital</span>
               </div>
             </div>

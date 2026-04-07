@@ -155,7 +155,7 @@ export default function Ouvidoria() {
 
             <Button 
                 onClick={() => { setSubmitted(null); form.reset(); setFiles([]); }} 
-                className="w-full bg-qualital-blue text-white hover:bg-qualital-blue/90 font-bold"
+                className="w-full bg-primary text-white hover:bg-primary/90 font-bold"
             >
               Nova Manifestação
             </Button>
@@ -166,7 +166,7 @@ export default function Ouvidoria() {
   }
 
   return (
-    <div className="min-h-screen w-full relative flex flex-col font-sans selection:bg-qualital-blue selection:text-white bg-white">
+    <div className="min-h-screen w-full relative flex flex-col font-sans selection:bg-primary selection:text-white bg-white">
        {/* Background Overlay */}
        <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white" />
@@ -195,7 +195,7 @@ export default function Ouvidoria() {
             <div className="space-y-2">
               <h2 className="text-xl font-semibold text-blue-600 tracking-wide uppercase">Ouvidoria Qualital</h2>
               <h1 className="text-5xl font-black tracking-tight leading-tight text-slate-900">
-                Sua voz é <span className="text-transparent bg-clip-text bg-gradient-to-r from-qualital-blue to-qualital-cyan">importante</span>.
+                Sua voz é <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/80">importante</span>.
               </h1>
             </div>
             
@@ -230,7 +230,7 @@ export default function Ouvidoria() {
             className="w-full max-w-xl"
           >
             <Card className="bg-white border-slate-200 shadow-2xl overflow-hidden">
-                <div className="h-2 w-full bg-gradient-to-r from-qualital-blue via-qualital-cyan to-qualital-green" />
+                <div className="h-2 w-full bg-gradient-to-r from-primary via-primary/80 to-primary" />
                 <CardHeader>
                     <CardTitle className="text-2xl text-slate-900">Nova Manifestação</CardTitle>
                     <CardDescription className="text-slate-500">Preencha os dados abaixo para abrir um chamado.</CardDescription>
@@ -344,7 +344,7 @@ export default function Ouvidoria() {
                         <Button 
                             type="submit" 
                             disabled={createTicket.isPending || isUploading}
-                            className="w-full bg-gradient-to-r from-qualital-blue to-qualital-cyan hover:from-qualital-blue/90 hover:to-qualital-cyan/90 text-white font-bold h-12 shadow-lg transition-all"
+                            className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/80/90 text-white font-bold h-12 shadow-lg transition-all"
                         >
                             {createTicket.isPending || isUploading ? (
                                 <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Processando...</>
