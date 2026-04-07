@@ -14,7 +14,6 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import logoQualital from "@/assets/logo-qualital-v2.png";
 
 // --- Schema de Validação ---
 const ouvidoriaSchema = z.object({
@@ -190,7 +189,7 @@ export default function Ouvidoria() {
             transition={{ duration: 0.8 }}
             className="text-slate-900 max-w-lg space-y-6"
           >
-            <img src={logoQualital} alt="Ouvidoria Qualital" className="h-20 mb-8" />
+            <img src="/logo-qualital.png" alt="Ouvidoria Qualital" className="h-20 mb-8" />
             
             <div className="space-y-2">
               <h2 className="text-xl font-semibold text-blue-600 tracking-wide uppercase">Ouvidoria Qualital</h2>
