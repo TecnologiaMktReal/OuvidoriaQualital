@@ -1,6 +1,6 @@
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import { TRPCError } from "@trpc/server";
-import { UNAUTHED_ERR_MSG } from "@shared/const";
+import { COOKIE_NAME, UNAUTHED_ERR_MSG } from "../../shared/const";
 import type { User } from "../../drizzle/schema";
 import {
   upsertUser,
