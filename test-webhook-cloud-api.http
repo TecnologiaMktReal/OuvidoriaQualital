@@ -1,0 +1,156 @@
+### Teste de Verificação do Webhook (GET) - Meta Business Manager
+### Este é o endpoint que a Meta usa para validar seu webhook
+GET https://h.coopedu.com.br/api/webhooks/whatsapp?hub.mode=subscribe&hub.verify_token=coopedu_whatsapp_secret_2025&hub.challenge=test_challenge_123
+Accept: text/plain
+
+### Resposta esperada: "test_challenge_123"
+
+###
+
+### Teste de Recebimento de Mensagem de Texto (POST)
+POST https://h.coopedu.com.br/api/webhooks/whatsapp
+Content-Type: application/json
+
+{
+  "object": "whatsapp_business_account",
+  "entry": [
+    {
+      "id": "BUSINESS_ACCOUNT_ID",
+      "changes": [
+        {
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": {
+              "display_phone_number": "5511999999999",
+              "phone_number_id": "123456789012345"
+            },
+            "contacts": [
+              {
+                "profile": {
+                  "name": "Ricardo Teste"
+                },
+                "wa_id": "5511988888888"
+              }
+            ],
+            "messages": [
+              {
+                "from": "5511988888888",
+                "id": "wamid.test123456",
+                "timestamp": "1737395000",
+                "text": {
+                  "body": "Olá, preciso de ajuda com meu atendimento!"
+                },
+                "type": "text"
+              }
+            ]
+          },
+          "field": "messages"
+        }
+      ]
+    }
+  ]
+}
+
+###
+
+### Teste Local (Development)
+GET http://localhost:3000/api/webhooks/whatsapp?hub.mode=subscribe&hub.verify_token=coopedu_whatsapp_secret_2025&hub.challenge=local_test_456
+Accept: text/plain
+
+###
+
+### Teste Local de Mensagem
+POST http://localhost:3000/api/webhooks/whatsapp
+Content-Type: application/json
+
+{
+  "object": "whatsapp_business_account",
+  "entry": [
+    {
+      "id": "BUSINESS_ACCOUNT_ID",
+      "changes": [
+        {
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": {
+              "display_phone_number": "5511999999999",
+              "phone_number_id": "123456789012345"
+            },
+            "contacts": [
+              {
+                "profile": {
+                  "name": "Teste Local"
+                },
+                "wa_id": "5511987654321"
+              }
+            ],
+            "messages": [
+              {
+                "from": "5511987654321",
+                "id": "wamid.local_test_789",
+                "timestamp": "1737395000",
+                "text": {
+                  "body": "Teste de mensagem local"
+                },
+                "type": "text"
+              }
+            ]
+          },
+          "field": "messages"
+        }
+      ]
+    }
+  ]
+}
+
+###
+
+### Teste com Imagem (Simulação)
+POST https://h.coopedu.com.br/api/webhooks/whatsapp
+Content-Type: application/json
+
+{
+  "object": "whatsapp_business_account",
+  "entry": [
+    {
+      "id": "BUSINESS_ACCOUNT_ID",
+      "changes": [
+        {
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": {
+              "display_phone_number": "5511999999999",
+              "phone_number_id": "123456789012345"
+            },
+            "contacts": [
+              {
+                "profile": {
+                  "name": "Usuario Teste"
+                },
+                "wa_id": "5511988888888"
+              }
+            ],
+            "messages": [
+              {
+                "from": "5511988888888",
+                "id": "wamid.image_test_001",
+                "timestamp": "1737395100",
+                "type": "image",
+                "image": {
+                  "id": "MEDIA_ID_FAKE_12345",
+                  "mime_type": "image/jpeg",
+                  "sha256": "fake_hash",
+                  "caption": "Foto enviada via WhatsApp"
+                }
+              }
+            ]
+          },
+          "field": "messages"
+        }
+      ]
+    }
+  ]
+}
+
+###
+

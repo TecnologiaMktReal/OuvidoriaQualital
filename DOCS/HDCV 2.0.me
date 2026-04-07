@@ -1,0 +1,47 @@
+HDCV 2.0 - Plano de Evolução
+
+[x] Correção de auth
+  - Remover qualquer bypass de autenticação (modo mock/admin automático) e retornar 401/403 quando o Supabase não estiver configurado ou o token for inválido.
+  - Sanitizar logs de autenticação (nunca logar cookies, tokens ou e-mails em claro); reduzir verbosidade.
+  - Ajustar validação de contexto (roles) para garantir bloqueio consistente em rotas protegidas.
+  - Arquivos: `server/_core/context.ts`, `server/_core/trpc.ts`, possivelmente rotas que dependem de RBAC (`server/routers/*`).
+  - Observações: tratar como risco crítico. Documentar comportamento antes/depois no código (comentário sucinto se necessário).
+
+[x] Paginação das listas críticas
+  - Incluir paginação e filtros seguros em consultas grandes (cooperados, contratos, tickets, mensagens), evitando fetch completo.
+  - Ajustar camadas API (tRPC) e frontend para enviar/consumir paginação onde necessário.
+  - Arquivos: `server/db.ts`, `server/routers/cooperados.ts`, `server/routers/contracts.ts`, `server/routers/tickets.ts`, `server/routers/users.ts` (se aplicável), e componentes de frontend que listam esses dados.
+  - Observações: priorizar listas que hoje retornam tudo (cooperados, contratos, tickets, mensagens). Avaliar criação de índices nas migrations se necessário.
+
+[x] Importação em massa robusta
+  - Envolver importações em transação; validar/normalizar dados; evitar duplicidade (matrícula/CPF) e garantir rollback em caso de erro em massa.
+  - Arquivos: `server/db.ts`, `server/routers/import.ts`, migrations se precisarem de índices/constraints.
+  - Observações: definir limiar de falhas para abortar (ex.: >5% de erros).
+
+[x] Protocolos e tickets mais resilientes
+  - Adicionar retry/garantia de unicidade na geração de protocolo de ticket; criar histórico também para mensagens recebidas do WhatsApp.
+  - Arquivos: `server/db.ts`, `server/routers/tickets.ts`, `server/whatsapp/service.ts`.
+  - Observações: prevenir colisões diárias e manter trilha de auditoria.
+
+[x] Saúde e fallback do WhatsApp
+  - Adicionar healthcheck, timeout e desativação limpa quando ambiente não suportar Chromium; logs mais claros.
+  - Arquivos: `server/whatsapp/service.ts`, possivelmente `server/routers/whatsapp.ts`.
+  - Observações: evitar queda do serviço inteiro quando dependências faltarem.
+
+
+[x] RBAC consistente em rotas e UI
+  - Reforçar checagens de role (admin/gerente/atendente) em todas as rotas sensíveis; alinhar feedback de erro no frontend.
+  - Arquivos: `server/routers/*`, componentes que disparam ações privilegiadas.
+  - Observações: usar helpers centralizados (`requireAdmin`, `requireAdminOrManager`, `hasRole`).
+
+[x] Desabilitar migrações automáticas em produção
+  - Garantir que `RUN_MIGRATIONS_ON_START` não rode em prod por padrão; exigir flag explícita e logs claros.
+  - Arquivos: `server/db.ts`, docs.
+  - Observações: evitar alterações de schema inadvertidas em produção.
+
+[x] Observabilidade e logs seguros
+  - Padronizar logs em nível info/warn/error; remover dados sensíveis; opcionalmente preparar uso de logger estruturado.
+  - Arquivos: pontos críticos do backend (auth, db, whatsapp).
+  - Observações: aplicar junto às demais tarefas conforme tocadas.
+
+

@@ -1,0 +1,1945 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-01-16T14:02:15.100Z",
+  "stack": {
+    "primaryLanguage": "typescript",
+    "languages": [
+      "javascript",
+      "typescript",
+      "python"
+    ],
+    "frameworks": [],
+    "buildTools": [
+      "vite",
+      "docker",
+      "docker-compose"
+    ],
+    "testFrameworks": [
+      "vitest"
+    ],
+    "packageManager": "pnpm",
+    "isMonorepo": false,
+    "hasDocker": true,
+    "hasCI": false
+  },
+  "structure": {
+    "totalFiles": 467,
+    "topDirectories": [
+      {
+        "name": "AI_RULES.md",
+        "fileCount": 1
+      },
+      {
+        "name": "aplicar-schema-producao.md",
+        "fileCount": 1
+      },
+      {
+        "name": "AssPC.png",
+        "fileCount": 1
+      },
+      {
+        "name": "Atue como Engenheiro Sênior conform.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "Backup",
+        "fileCount": 1
+      },
+      {
+        "name": "backup_estrutura.sql",
+        "fileCount": 1
+      },
+      {
+        "name": "check_ffmpeg.js",
+        "fileCount": 1
+      },
+      {
+        "name": "check_ffmpeg.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "check-db.cjs",
+        "fileCount": 1
+      },
+      {
+        "name": "check-db.js",
+        "fileCount": 1
+      },
+      {
+        "name": "clean_logo.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "client",
+        "fileCount": 152
+      },
+      {
+        "name": "close_ticket.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "components.json",
+        "fileCount": 1
+      },
+      {
+        "name": "CONTRATOS_IMP.csv",
+        "fileCount": 1
+      },
+      {
+        "name": "Coult.md",
+        "fileCount": 1
+      },
+      {
+        "name": "criar-tabelas-zeabur.sql",
+        "fileCount": 1
+      },
+      {
+        "name": "csat_dump.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "DECLARAÇÃO DESLIGADO.docx",
+        "fileCount": 1
+      },
+      {
+        "name": "DECLARAÇÃO.docx",
+        "fileCount": 1
+      },
+      {
+        "name": "DEPLOY_SCHEMA.md",
+        "fileCount": 1
+      },
+      {
+        "name": "docker-compose.yml",
+        "fileCount": 1
+      },
+      {
+        "name": "Dockerfile",
+        "fileCount": 1
+      },
+      {
+        "name": "DOCS",
+        "fileCount": 7
+      },
+      {
+        "name": "drizzle",
+        "fileCount": 5
+      },
+      {
+        "name": "drizzle.config.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "executar-local.bat",
+        "fileCount": 1
+      },
+      {
+        "name": "extract_text.js",
+        "fileCount": 1
+      },
+      {
+        "name": "full_logo_base64.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "get-my-uuid.md",
+        "fileCount": 1
+      },
+      {
+        "name": "git_full_log.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "git_log.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "GoodPratice.md",
+        "fileCount": 1
+      },
+      {
+        "name": "HPC_Local.bat",
+        "fileCount": 1
+      },
+      {
+        "name": "IMG_Cabecalho_timbrado.png",
+        "fileCount": 1
+      },
+      {
+        "name": "IMG_Rodape_timbrado.png",
+        "fileCount": 1
+      },
+      {
+        "name": "INICIAR_LOCAL.bat",
+        "fileCount": 1
+      },
+      {
+        "name": "INICIAR.bat",
+        "fileCount": 1
+      },
+      {
+        "name": "iniciar.sh",
+        "fileCount": 1
+      },
+      {
+        "name": "install.bat",
+        "fileCount": 1
+      },
+      {
+        "name": "install.sh",
+        "fileCount": 1
+      },
+      {
+        "name": "INSTALL2.BAT",
+        "fileCount": 1
+      },
+      {
+        "name": "list_csat_msgs.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "logo_base64.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "logo_white_base64.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "logo_white.png",
+        "fileCount": 1
+      },
+      {
+        "name": "migrate-v2.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "modelcontextprotocol-server-filesystem-2025.11.25.tgz",
+        "fileCount": 1
+      },
+      {
+        "name": "Motivo de Atendimento.csv",
+        "fileCount": 1
+      },
+      {
+        "name": "new_logo_base64.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "old",
+        "fileCount": 1
+      },
+      {
+        "name": "package.json",
+        "fileCount": 1
+      },
+      {
+        "name": "papel-timbrado-Qualital.docx",
+        "fileCount": 1
+      },
+      {
+        "name": "patches",
+        "fileCount": 1
+      },
+      {
+        "name": "pnpm-lock.yaml",
+        "fileCount": 1
+      },
+      {
+        "name": "README_INSTALACAO_LOCAL.md",
+        "fileCount": 1
+      },
+      {
+        "name": "README_INSTALACAO.md",
+        "fileCount": 1
+      },
+      {
+        "name": "README.md",
+        "fileCount": 1
+      },
+      {
+        "name": "Relatorio_Diario_Qualital.pdf",
+        "fileCount": 1
+      },
+      {
+        "name": "scripts",
+        "fileCount": 44
+      },
+      {
+        "name": "server",
+        "fileCount": 57
+      },
+      {
+        "name": "setup-database.sql",
+        "fileCount": 1
+      },
+      {
+        "name": "shared",
+        "fileCount": 8
+      },
+      {
+        "name": "SpecUI.MD",
+        "fileCount": 1
+      },
+      {
+        "name": "start-email-server.bat",
+        "fileCount": 1
+      },
+      {
+        "name": "start.bat",
+        "fileCount": 1
+      },
+      {
+        "name": "start.sh",
+        "fileCount": 1
+      },
+      {
+        "name": "SYNC_SCHEMA.md",
+        "fileCount": 1
+      },
+      {
+        "name": "sync-to-zeabur.bat",
+        "fileCount": 1
+      },
+      {
+        "name": "tailwind.config.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "temp_docx",
+        "fileCount": 0
+      },
+      {
+        "name": "tmp_report_template_pages",
+        "fileCount": 9
+      },
+      {
+        "name": "todo.md",
+        "fileCount": 1
+      },
+      {
+        "name": "tsconfig.json",
+        "fileCount": 1
+      },
+      {
+        "name": "update_csat_msgs.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "update-csv-export.ps1",
+        "fileCount": 1
+      },
+      {
+        "name": "update-exports.ps1",
+        "fileCount": 1
+      },
+      {
+        "name": "uploads",
+        "fileCount": 112
+      },
+      {
+        "name": "VARIAVEIS_AMBIENTE.md",
+        "fileCount": 1
+      },
+      {
+        "name": "vite.config.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "vitest.config.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "word",
+        "fileCount": 1
+      }
+    ],
+    "languageDistribution": [
+      {
+        "extension": ".tsx",
+        "count": 129
+      },
+      {
+        "extension": ".ts",
+        "count": 104
+      },
+      {
+        "extension": ".ogg",
+        "count": 79
+      },
+      {
+        "extension": ".png",
+        "count": 38
+      },
+      {
+        "extension": ".md",
+        "count": 14
+      },
+      {
+        "extension": ".cjs",
+        "count": 11
+      },
+      {
+        "extension": ".bat",
+        "count": 10
+      },
+      {
+        "extension": ".mjs",
+        "count": 10
+      },
+      {
+        "extension": ".txt",
+        "count": 9
+      },
+      {
+        "extension": ".pdf",
+        "count": 8
+      }
+    ]
+  },
+  "architecture": {
+    "layers": [
+      {
+        "name": "Config",
+        "description": "Configuration and constants",
+        "directories": [
+          ".",
+          "client",
+          "server\\whatsapp"
+        ],
+        "symbolCount": 5,
+        "dependsOn": [
+          "Controllers"
+        ]
+      },
+      {
+        "name": "Utils",
+        "description": "Shared utilities and helpers",
+        "directories": [
+          "shared",
+          "shared\\_core",
+          "client\\src\\lib"
+        ],
+        "symbolCount": 13,
+        "dependsOn": [
+          "Controllers"
+        ]
+      },
+      {
+        "name": "Repositories",
+        "description": "Data access and persistence",
+        "directories": [
+          "scripts"
+        ],
+        "symbolCount": 1,
+        "dependsOn": [
+          "Controllers",
+          "Models"
+        ]
+      },
+      {
+        "name": "Controllers",
+        "description": "Request handling and routing",
+        "directories": [
+          "server",
+          "server\\_core",
+          "server\\routers",
+          "client\\src\\pages\\settings"
+        ],
+        "symbolCount": 5,
+        "dependsOn": []
+      },
+      {
+        "name": "Models",
+        "description": "Data structures and domain objects",
+        "directories": [
+          "drizzle",
+          "scripts"
+        ],
+        "symbolCount": 72,
+        "dependsOn": []
+      },
+      {
+        "name": "Services",
+        "description": "Business logic and orchestration",
+        "directories": [
+          "server\\whatsapp",
+          "server\\email",
+          "server\\services"
+        ],
+        "symbolCount": 48,
+        "dependsOn": [
+          "Controllers"
+        ]
+      },
+      {
+        "name": "Components",
+        "description": "UI components and views",
+        "directories": [
+          "client\\src\\pages",
+          "client\\src\\components",
+          "client\\src\\pages\\settings",
+          "client\\src\\pages\\relatorios",
+          "client\\src\\components\\ui"
+        ],
+        "symbolCount": 154,
+        "dependsOn": [
+          "Utils"
+        ]
+      }
+    ],
+    "patterns": [],
+    "entryPoints": [
+      "server\\_core\\index.ts",
+      "client\\src\\main.tsx"
+    ]
+  },
+  "symbols": {
+    "classes": [
+      {
+        "name": "HttpError",
+        "kind": "class",
+        "file": "shared\\_core\\errors.ts",
+        "line": 5,
+        "exported": true
+      },
+      {
+        "name": "ErrorBoundary",
+        "kind": "class",
+        "file": "client\\src\\components\\ErrorBoundary.tsx",
+        "line": 14,
+        "exported": false
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Banco",
+        "kind": "interface",
+        "file": "shared\\bancos.ts",
+        "line": 9,
+        "exported": true
+      },
+      {
+        "name": "DailyReportData",
+        "kind": "interface",
+        "file": "server\\reports\\dailyReport.ts",
+        "line": 1,
+        "exported": true
+      },
+      {
+        "name": "DeclarationData",
+        "kind": "interface",
+        "file": "server\\reports\\declarationReport.ts",
+        "line": 6,
+        "exported": true
+      },
+      {
+        "name": "PeriodicReportData",
+        "kind": "interface",
+        "file": "server\\services\\aiAnalysis.ts",
+        "line": 4,
+        "exported": true
+      },
+      {
+        "name": "PlaceholderContext",
+        "kind": "interface",
+        "file": "server\\whatsapp\\placeholders.ts",
+        "line": 1,
+        "exported": true
+      },
+      {
+        "name": "TicketFilters",
+        "kind": "interface",
+        "file": "client\\src\\components\\TicketFilter.tsx",
+        "line": 37,
+        "exported": true
+      },
+      {
+        "name": "ToastProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\ui\\toast.tsx",
+        "line": 5,
+        "exported": true
+      },
+      {
+        "name": "UseCompositionOptions",
+        "kind": "interface",
+        "file": "client\\src\\hooks\\useComposition.ts",
+        "line": 13,
+        "exported": true
+      },
+      {
+        "name": "UseCompositionReturn",
+        "kind": "interface",
+        "file": "client\\src\\hooks\\useComposition.ts",
+        "line": 4,
+        "exported": true
+      },
+      {
+        "name": "UserProfile",
+        "kind": "interface",
+        "file": "client\\src\\_core\\hooks\\useAuth.ts",
+        "line": 5,
+        "exported": true
+      },
+      {
+        "name": "AttendanceReasonsChartProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\AttendanceReasonsChart.tsx",
+        "line": 20,
+        "exported": false
+      },
+      {
+        "name": "AttendanceStats",
+        "kind": "interface",
+        "file": "client\\src\\components\\AttendanceReasonsChart.tsx",
+        "line": 15,
+        "exported": false
+      },
+      {
+        "name": "AudioPlayerProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\AudioPlayer.tsx",
+        "line": 4,
+        "exported": false
+      },
+      {
+        "name": "ClienteInfoSectionProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\ClienteInfoSection.tsx",
+        "line": 4,
+        "exported": false
+      },
+      {
+        "name": "CsatStats",
+        "kind": "interface",
+        "file": "client\\src\\components\\CSATStatsChart.tsx",
+        "line": 15,
+        "exported": false
+      },
+      {
+        "name": "CSATStatsChartProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\CSATStatsChart.tsx",
+        "line": 21,
+        "exported": false
+      },
+      {
+        "name": "DeclarationPreviewModalProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\DeclarationPreviewModal.tsx",
+        "line": 8,
+        "exported": false
+      },
+      {
+        "name": "HistoricoSectionProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\HistoricoSection.tsx",
+        "line": 5,
+        "exported": false
+      },
+      {
+        "name": "LayoutProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\Layout.tsx",
+        "line": 7,
+        "exported": false
+      },
+      {
+        "name": "MapViewProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\Map.tsx",
+        "line": 112,
+        "exported": false
+      },
+      {
+        "name": "PeriodicReportHtmlData",
+        "kind": "interface",
+        "file": "server\\reports\\periodicReport.ts",
+        "line": 3,
+        "exported": false
+      },
+      {
+        "name": "Props",
+        "kind": "interface",
+        "file": "client\\src\\components\\PeriodicReportViewer.tsx",
+        "line": 53,
+        "exported": false
+      },
+      {
+        "name": "Props",
+        "kind": "interface",
+        "file": "client\\src\\components\\ErrorBoundary.tsx",
+        "line": 5,
+        "exported": false
+      },
+      {
+        "name": "ProtectedRouteProps",
+        "kind": "interface",
+        "file": "client\\src\\App.tsx",
+        "line": 92,
+        "exported": false
+      },
+      {
+        "name": "RankingViewerProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\RankingViewer.tsx",
+        "line": 16,
+        "exported": false
+      },
+      {
+        "name": "RequestOptions",
+        "kind": "interface",
+        "file": "server\\_core\\map.ts",
+        "line": 41,
+        "exported": false
+      },
+      {
+        "name": "RouteDefinition",
+        "kind": "interface",
+        "file": "client\\src\\App.tsx",
+        "line": 43,
+        "exported": false
+      },
+      {
+        "name": "SimpleTicket",
+        "kind": "interface",
+        "file": "client\\src\\components\\TicketTypeSelector.tsx",
+        "line": 9,
+        "exported": false
+      },
+      {
+        "name": "SimpleTicket",
+        "kind": "interface",
+        "file": "client\\src\\components\\TicketReasonSelector.tsx",
+        "line": 10,
+        "exported": false
+      },
+      {
+        "name": "SimpleTicket",
+        "kind": "interface",
+        "file": "client\\src\\components\\TicketCriticitySelector.tsx",
+        "line": 9,
+        "exported": false
+      },
+      {
+        "name": "State",
+        "kind": "interface",
+        "file": "client\\src\\hooks\\use-toast.ts",
+        "line": 37,
+        "exported": false
+      },
+      {
+        "name": "State",
+        "kind": "interface",
+        "file": "client\\src\\components\\ErrorBoundary.tsx",
+        "line": 9,
+        "exported": false
+      },
+      {
+        "name": "ThemeContextType",
+        "kind": "interface",
+        "file": "client\\src\\contexts\\ThemeContext.tsx",
+        "line": 5,
+        "exported": false
+      },
+      {
+        "name": "ThemeProviderProps",
+        "kind": "interface",
+        "file": "client\\src\\contexts\\ThemeContext.tsx",
+        "line": 13,
+        "exported": false
+      },
+      {
+        "name": "TicketFilterProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\TicketFilter.tsx",
+        "line": 48,
+        "exported": false
+      },
+      {
+        "name": "TicketListViewProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\TicketListView.tsx",
+        "line": 33,
+        "exported": false
+      },
+      {
+        "name": "TicketReportModalProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\TicketReportModal.tsx",
+        "line": 23,
+        "exported": false
+      },
+      {
+        "name": "WhatsAppChatSectionProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\WhatsAppChatSection.tsx",
+        "line": 22,
+        "exported": false
+      },
+      {
+        "name": "WhatsAppPanelProps",
+        "kind": "interface",
+        "file": "client\\src\\components\\WhatsAppPanel.tsx",
+        "line": 12,
+        "exported": false
+      },
+      {
+        "name": "Window",
+        "kind": "interface",
+        "file": "client\\src\\components\\Map.tsx",
+        "line": 84,
+        "exported": false
+      }
+    ],
+    "functions": [
+      {
+        "name": "AgendamentoEnvio",
+        "kind": "function",
+        "file": "client\\src\\pages\\relatorios\\AgendamentoEnvio.tsx",
+        "line": 5,
+        "exported": true
+      },
+      {
+        "name": "APIs",
+        "kind": "function",
+        "file": "client\\src\\pages\\settings\\APIs.tsx",
+        "line": 5,
+        "exported": true
+      },
+      {
+        "name": "buscarBancosPorNome",
+        "kind": "function",
+        "file": "shared\\bancos.ts",
+        "line": 29,
+        "exported": true
+      },
+      {
+        "name": "callDataApi",
+        "kind": "function",
+        "file": "server\\_core\\dataApi.ts",
+        "line": 16,
+        "exported": true
+      },
+      {
+        "name": "cn",
+        "kind": "function",
+        "file": "client\\src\\lib\\utils.ts",
+        "line": 4,
+        "exported": true
+      },
+      {
+        "name": "connect",
+        "kind": "function",
+        "file": "scripts\\test_db_connection.py",
+        "line": 9,
+        "exported": true
+      },
+      {
+        "name": "createContext",
+        "kind": "function",
+        "file": "server\\_core\\context.ts",
+        "line": 49,
+        "exported": true
+      },
+      {
+        "name": "DashboardLayout",
+        "kind": "function",
+        "file": "client\\src\\components\\DashboardLayout.tsx",
+        "line": 40,
+        "exported": true
+      },
+      {
+        "name": "DashboardLayoutSkeleton",
+        "kind": "function",
+        "file": "client\\src\\components\\DashboardLayoutSkeleton.tsx",
+        "line": 3,
+        "exported": true
+      },
+      {
+        "name": "decryptSecret",
+        "kind": "function",
+        "file": "server\\email\\crypto.ts",
+        "line": 20,
+        "exported": true
+      },
+      {
+        "name": "disableSupabaseAdmin",
+        "kind": "function",
+        "file": "server\\_core\\supabaseAdmin.ts",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "disconnectWhatsApp",
+        "kind": "function",
+        "file": "server\\whatsapp\\service.ts",
+        "line": 907,
+        "exported": true
+      },
+      {
+        "name": "encryptSecret",
+        "kind": "function",
+        "file": "server\\email\\crypto.ts",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "extractSequentialFromContractId",
+        "kind": "function",
+        "file": "shared\\ufCodes.ts",
+        "line": 75,
+        "exported": true
+      },
+      {
+        "name": "extractUfCodeFromContractId",
+        "kind": "function",
+        "file": "shared\\ufCodes.ts",
+        "line": 56,
+        "exported": true
+      },
+      {
+        "name": "FixAdmin",
+        "kind": "function",
+        "file": "client\\src\\pages\\FixAdmin.tsx",
+        "line": 15,
+        "exported": true
+      },
+      {
+        "name": "generateContractId",
+        "kind": "function",
+        "file": "shared\\ufCodes.ts",
+        "line": 40,
+        "exported": true
+      },
+      {
+        "name": "generateDailyReportHtml",
+        "kind": "function",
+        "file": "server\\reports\\dailyReport.ts",
+        "line": 140,
+        "exported": true
+      },
+      {
+        "name": "generateDeclarationHtml",
+        "kind": "function",
+        "file": "server\\reports\\declarationReport.ts",
+        "line": 54,
+        "exported": true
+      },
+      {
+        "name": "generateImage",
+        "kind": "function",
+        "file": "server\\_core\\imageGeneration.ts",
+        "line": 34,
+        "exported": true
+      },
+      {
+        "name": "generatePeriodicReportAnalysis",
+        "kind": "function",
+        "file": "server\\services\\aiAnalysis.ts",
+        "line": 19,
+        "exported": true
+      },
+      {
+        "name": "generatePeriodicReportHtml",
+        "kind": "function",
+        "file": "server\\reports\\periodicReport.ts",
+        "line": 62,
+        "exported": true
+      },
+      {
+        "name": "getActiveType",
+        "kind": "function",
+        "file": "server\\whatsapp\\config.ts",
+        "line": 24,
+        "exported": true
+      },
+      {
+        "name": "getBancoPorCodigo",
+        "kind": "function",
+        "file": "shared\\bancos.ts",
+        "line": 24,
+        "exported": true
+      },
+      {
+        "name": "getConfigSummary",
+        "kind": "function",
+        "file": "server\\whatsapp\\service.ts",
+        "line": 334,
+        "exported": true
+      },
+      {
+        "name": "getConnectionStatus",
+        "kind": "function",
+        "file": "server\\whatsapp\\service.ts",
+        "line": 377,
+        "exported": true
+      },
+      {
+        "name": "getCurrentQRCode",
+        "kind": "function",
+        "file": "server\\whatsapp\\service.ts",
+        "line": 372,
+        "exported": true
+      },
+      {
+        "name": "getSessionCookieOptions",
+        "kind": "function",
+        "file": "server\\_core\\cookies.ts",
+        "line": 24,
+        "exported": true
+      },
+      {
+        "name": "getSupabaseAdminClient",
+        "kind": "function",
+        "file": "server\\_core\\supabaseAdmin.ts",
+        "line": 19,
+        "exported": true
+      },
+      {
+        "name": "getWhatsappHealth",
+        "kind": "function",
+        "file": "server\\whatsapp\\service.ts",
+        "line": 382,
+        "exported": true
+      },
+      {
+        "name": "handleWebhookEvent",
+        "kind": "function",
+        "file": "server\\whatsapp\\service.ts",
+        "line": 775,
+        "exported": true
+      },
+      {
+        "name": "handleWebhookVerification",
+        "kind": "function",
+        "file": "server\\whatsapp\\service.ts",
+        "line": 755,
+        "exported": true
+      },
+      {
+        "name": "hasRole",
+        "kind": "function",
+        "file": "server\\_core\\trpc.ts",
+        "line": 31,
+        "exported": true
+      },
+      {
+        "name": "import_sql_file",
+        "kind": "function",
+        "file": "scripts\\import_db.py",
+        "line": 9,
+        "exported": true
+      },
+      {
+        "name": "initializeWhatsApp",
+        "kind": "function",
+        "file": "server\\whatsapp\\service.ts",
+        "line": 902,
+        "exported": true
+      },
+      {
+        "name": "invokeLLM",
+        "kind": "function",
+        "file": "server\\_core\\llm.ts",
+        "line": 268,
+        "exported": true
+      },
+      {
+        "name": "isAdmin",
+        "kind": "function",
+        "file": "server\\_core\\trpc.ts",
+        "line": 37,
+        "exported": true
+      },
+      {
+        "name": "isAdminOrManager",
+        "kind": "function",
+        "file": "server\\_core\\trpc.ts",
+        "line": 42,
+        "exported": true
+      },
+      {
+        "name": "Layout",
+        "kind": "function",
+        "file": "client\\src\\components\\Layout.tsx",
+        "line": 12,
+        "exported": true
+      },
+      {
+        "name": "logUserAction",
+        "kind": "function",
+        "file": "server\\_core\\audit.ts",
+        "line": 22,
+        "exported": true
+      },
+      {
+        "name": "makeRequest",
+        "kind": "function",
+        "file": "server\\_core\\map.ts",
+        "line": 54,
+        "exported": true
+      },
+      {
+        "name": "MapView",
+        "kind": "function",
+        "file": "client\\src\\components\\Map.tsx",
+        "line": 119,
+        "exported": true
+      },
+      {
+        "name": "ModeToggle",
+        "kind": "function",
+        "file": "client\\src\\components\\mode-toggle.tsx",
+        "line": 5,
+        "exported": true
+      },
+      {
+        "name": "normalizeObjectFields",
+        "kind": "function",
+        "file": "shared\\textUtils.ts",
+        "line": 35,
+        "exported": true
+      },
+      {
+        "name": "normalizeText",
+        "kind": "function",
+        "file": "shared\\textUtils.ts",
+        "line": 10,
+        "exported": true
+      },
+      {
+        "name": "NotFound",
+        "kind": "function",
+        "file": "client\\src\\pages\\NotFound.tsx",
+        "line": 6,
+        "exported": true
+      },
+      {
+        "name": "notifyOwner",
+        "kind": "function",
+        "file": "server\\_core\\notification.ts",
+        "line": 66,
+        "exported": true
+      },
+      {
+        "name": "processBotAutomations",
+        "kind": "function",
+        "file": "server\\automation\\botScheduler.ts",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "RankingAtendimento",
+        "kind": "function",
+        "file": "client\\src\\pages\\relatorios\\RankingAtendimento.tsx",
+        "line": 5,
+        "exported": true
+      },
+      {
+        "name": "RankingContratos",
+        "kind": "function",
+        "file": "client\\src\\pages\\relatorios\\RankingContratos.tsx",
+        "line": 6,
+        "exported": true
+      }
+    ],
+    "types": [
+      {
+        "name": "AIChatBoxProps",
+        "kind": "type",
+        "file": "client\\src\\components\\AIChatBox.tsx",
+        "line": 17,
+        "exported": true
+      },
+      {
+        "name": "AppRouter",
+        "kind": "type",
+        "file": "server\\routers.ts",
+        "line": 69,
+        "exported": true
+      },
+      {
+        "name": "AttendanceReason",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 591,
+        "exported": true
+      },
+      {
+        "name": "ChartConfig",
+        "kind": "type",
+        "file": "client\\src\\components\\ui\\chart.tsx",
+        "line": 9,
+        "exported": true
+      },
+      {
+        "name": "Contract",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 588,
+        "exported": true
+      },
+      {
+        "name": "ConversationParticipant",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 633,
+        "exported": true
+      },
+      {
+        "name": "Cliente",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 576,
+        "exported": true
+      },
+      {
+        "name": "ClienteBankData",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 585,
+        "exported": true
+      },
+      {
+        "name": "ClienteEmail",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 582,
+        "exported": true
+      },
+      {
+        "name": "ClientePhone",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 579,
+        "exported": true
+      },
+      {
+        "name": "Cooperativa",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 561,
+        "exported": true
+      },
+      {
+        "name": "CsatSurvey",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 606,
+        "exported": true
+      },
+      {
+        "name": "DataApiCallOptions",
+        "kind": "type",
+        "file": "server\\_core\\dataApi.ts",
+        "line": 9,
+        "exported": true
+      },
+      {
+        "name": "Database",
+        "kind": "type",
+        "file": "client\\src\\integrations\\supabase\\types.ts",
+        "line": 1,
+        "exported": true
+      },
+      {
+        "name": "DateRangeType",
+        "kind": "type",
+        "file": "client\\src\\components\\TicketFilter.tsx",
+        "line": 35,
+        "exported": true
+      },
+      {
+        "name": "Department",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 558,
+        "exported": true
+      },
+      {
+        "name": "DirectionsResult",
+        "kind": "type",
+        "file": "server\\_core\\map.ts",
+        "line": 105,
+        "exported": true
+      },
+      {
+        "name": "DistanceMatrixResult",
+        "kind": "type",
+        "file": "server\\_core\\map.ts",
+        "line": 131,
+        "exported": true
+      },
+      {
+        "name": "ElevationResult",
+        "kind": "type",
+        "file": "server\\_core\\map.ts",
+        "line": 209,
+        "exported": true
+      },
+      {
+        "name": "EmailAccount",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 615,
+        "exported": true
+      },
+      {
+        "name": "EmailAttachment",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 627,
+        "exported": true
+      },
+      {
+        "name": "EmailCredential",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 618,
+        "exported": true
+      },
+      {
+        "name": "EmailEvent",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 624,
+        "exported": true
+      },
+      {
+        "name": "EmailTestLog",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 621,
+        "exported": true
+      },
+      {
+        "name": "EstadoBrasil",
+        "kind": "type",
+        "file": "shared\\brasil.ts",
+        "line": 36,
+        "exported": true
+      },
+      {
+        "name": "FileContent",
+        "kind": "type",
+        "file": "server\\_core\\llm.ts",
+        "line": 18,
+        "exported": true
+      },
+      {
+        "name": "GenerateImageOptions",
+        "kind": "type",
+        "file": "server\\_core\\imageGeneration.ts",
+        "line": 21,
+        "exported": true
+      },
+      {
+        "name": "GenerateImageResponse",
+        "kind": "type",
+        "file": "server\\_core\\imageGeneration.ts",
+        "line": 30,
+        "exported": true
+      },
+      {
+        "name": "GeocodingResult",
+        "kind": "type",
+        "file": "server\\_core\\map.ts",
+        "line": 144,
+        "exported": true
+      },
+      {
+        "name": "ImageContent",
+        "kind": "type",
+        "file": "server\\_core\\llm.ts",
+        "line": 10,
+        "exported": true
+      },
+      {
+        "name": "InsertAttendanceReason",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 592,
+        "exported": true
+      },
+      {
+        "name": "InsertContract",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 589,
+        "exported": true
+      },
+      {
+        "name": "InsertConversationParticipant",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 634,
+        "exported": true
+      },
+      {
+        "name": "InsertCliente",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 577,
+        "exported": true
+      },
+      {
+        "name": "InsertClienteBankData",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 586,
+        "exported": true
+      },
+      {
+        "name": "InsertClienteEmail",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 583,
+        "exported": true
+      },
+      {
+        "name": "InsertClientePhone",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 580,
+        "exported": true
+      },
+      {
+        "name": "InsertCooperativa",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 562,
+        "exported": true
+      },
+      {
+        "name": "InsertCsatSurvey",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 607,
+        "exported": true
+      },
+      {
+        "name": "InsertDepartment",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 559,
+        "exported": true
+      },
+      {
+        "name": "InsertEmailAccount",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 616,
+        "exported": true
+      },
+      {
+        "name": "InsertEmailAttachment",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 628,
+        "exported": true
+      },
+      {
+        "name": "InsertEmailCredential",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 619,
+        "exported": true
+      },
+      {
+        "name": "InsertEmailEvent",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 625,
+        "exported": true
+      },
+      {
+        "name": "InsertEmailTestLog",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 622,
+        "exported": true
+      },
+      {
+        "name": "InsertInternalConversation",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 631,
+        "exported": true
+      },
+      {
+        "name": "InsertInternalMessage",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 637,
+        "exported": true
+      },
+      {
+        "name": "InsertProfile",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 553,
+        "exported": true
+      },
+      {
+        "name": "InsertQuickMessage",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 613,
+        "exported": true
+      },
+      {
+        "name": "InsertSticker",
+        "kind": "type",
+        "file": "drizzle\\schema.ts",
+        "line": 640,
+        "exported": true
+      }
+    ],
+    "enums": []
+  },
+  "publicAPI": [
+    {
+      "name": "AgendamentoEnvio",
+      "kind": "function",
+      "file": "client\\src\\pages\\relatorios\\AgendamentoEnvio.tsx",
+      "line": 5,
+      "exported": true
+    },
+    {
+      "name": "AIChatBoxProps",
+      "kind": "type",
+      "file": "client\\src\\components\\AIChatBox.tsx",
+      "line": 17,
+      "exported": true
+    },
+    {
+      "name": "APIs",
+      "kind": "function",
+      "file": "client\\src\\pages\\settings\\APIs.tsx",
+      "line": 5,
+      "exported": true
+    },
+    {
+      "name": "AppRouter",
+      "kind": "type",
+      "file": "server\\routers.ts",
+      "line": 69,
+      "exported": true
+    },
+    {
+      "name": "AttendanceReason",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 591,
+      "exported": true
+    },
+    {
+      "name": "Banco",
+      "kind": "interface",
+      "file": "shared\\bancos.ts",
+      "line": 9,
+      "exported": true
+    },
+    {
+      "name": "buscarBancosPorNome",
+      "kind": "function",
+      "file": "shared\\bancos.ts",
+      "line": 29,
+      "exported": true
+    },
+    {
+      "name": "callDataApi",
+      "kind": "function",
+      "file": "server\\_core\\dataApi.ts",
+      "line": 16,
+      "exported": true
+    },
+    {
+      "name": "ChartConfig",
+      "kind": "type",
+      "file": "client\\src\\components\\ui\\chart.tsx",
+      "line": 9,
+      "exported": true
+    },
+    {
+      "name": "cn",
+      "kind": "function",
+      "file": "client\\src\\lib\\utils.ts",
+      "line": 4,
+      "exported": true
+    },
+    {
+      "name": "connect",
+      "kind": "function",
+      "file": "scripts\\test_db_connection.py",
+      "line": 9,
+      "exported": true
+    },
+    {
+      "name": "Contract",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 588,
+      "exported": true
+    },
+    {
+      "name": "ConversationParticipant",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 633,
+      "exported": true
+    },
+    {
+      "name": "Cliente",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 576,
+      "exported": true
+    },
+    {
+      "name": "ClienteBankData",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 585,
+      "exported": true
+    },
+    {
+      "name": "ClienteEmail",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 582,
+      "exported": true
+    },
+    {
+      "name": "ClientePhone",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 579,
+      "exported": true
+    },
+    {
+      "name": "Cooperativa",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 561,
+      "exported": true
+    },
+    {
+      "name": "createContext",
+      "kind": "function",
+      "file": "server\\_core\\context.ts",
+      "line": 49,
+      "exported": true
+    },
+    {
+      "name": "CsatSurvey",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 606,
+      "exported": true
+    },
+    {
+      "name": "DailyReportData",
+      "kind": "interface",
+      "file": "server\\reports\\dailyReport.ts",
+      "line": 1,
+      "exported": true
+    },
+    {
+      "name": "DashboardLayout",
+      "kind": "function",
+      "file": "client\\src\\components\\DashboardLayout.tsx",
+      "line": 40,
+      "exported": true
+    },
+    {
+      "name": "DashboardLayoutSkeleton",
+      "kind": "function",
+      "file": "client\\src\\components\\DashboardLayoutSkeleton.tsx",
+      "line": 3,
+      "exported": true
+    },
+    {
+      "name": "DataApiCallOptions",
+      "kind": "type",
+      "file": "server\\_core\\dataApi.ts",
+      "line": 9,
+      "exported": true
+    },
+    {
+      "name": "Database",
+      "kind": "type",
+      "file": "client\\src\\integrations\\supabase\\types.ts",
+      "line": 1,
+      "exported": true
+    },
+    {
+      "name": "DateRangeType",
+      "kind": "type",
+      "file": "client\\src\\components\\TicketFilter.tsx",
+      "line": 35,
+      "exported": true
+    },
+    {
+      "name": "DeclarationData",
+      "kind": "interface",
+      "file": "server\\reports\\declarationReport.ts",
+      "line": 6,
+      "exported": true
+    },
+    {
+      "name": "decryptSecret",
+      "kind": "function",
+      "file": "server\\email\\crypto.ts",
+      "line": 20,
+      "exported": true
+    },
+    {
+      "name": "Department",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 558,
+      "exported": true
+    },
+    {
+      "name": "DirectionsResult",
+      "kind": "type",
+      "file": "server\\_core\\map.ts",
+      "line": 105,
+      "exported": true
+    },
+    {
+      "name": "disableSupabaseAdmin",
+      "kind": "function",
+      "file": "server\\_core\\supabaseAdmin.ts",
+      "line": 11,
+      "exported": true
+    },
+    {
+      "name": "disconnectWhatsApp",
+      "kind": "function",
+      "file": "server\\whatsapp\\service.ts",
+      "line": 907,
+      "exported": true
+    },
+    {
+      "name": "DistanceMatrixResult",
+      "kind": "type",
+      "file": "server\\_core\\map.ts",
+      "line": 131,
+      "exported": true
+    },
+    {
+      "name": "ElevationResult",
+      "kind": "type",
+      "file": "server\\_core\\map.ts",
+      "line": 209,
+      "exported": true
+    },
+    {
+      "name": "EmailAccount",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 615,
+      "exported": true
+    },
+    {
+      "name": "EmailAttachment",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 627,
+      "exported": true
+    },
+    {
+      "name": "EmailCredential",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 618,
+      "exported": true
+    },
+    {
+      "name": "EmailEvent",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 624,
+      "exported": true
+    },
+    {
+      "name": "EmailTestLog",
+      "kind": "type",
+      "file": "drizzle\\schema.ts",
+      "line": 621,
+      "exported": true
+    },
+    {
+      "name": "encryptSecret",
+      "kind": "function",
+      "file": "server\\email\\crypto.ts",
+      "line": 11,
+      "exported": true
+    },
+    {
+      "name": "EstadoBrasil",
+      "kind": "type",
+      "file": "shared\\brasil.ts",
+      "line": 36,
+      "exported": true
+    },
+    {
+      "name": "extractSequentialFromContractId",
+      "kind": "function",
+      "file": "shared\\ufCodes.ts",
+      "line": 75,
+      "exported": true
+    },
+    {
+      "name": "extractUfCodeFromContractId",
+      "kind": "function",
+      "file": "shared\\ufCodes.ts",
+      "line": 56,
+      "exported": true
+    },
+    {
+      "name": "FileContent",
+      "kind": "type",
+      "file": "server\\_core\\llm.ts",
+      "line": 18,
+      "exported": true
+    },
+    {
+      "name": "FixAdmin",
+      "kind": "function",
+      "file": "client\\src\\pages\\FixAdmin.tsx",
+      "line": 15,
+      "exported": true
+    },
+    {
+      "name": "generateContractId",
+      "kind": "function",
+      "file": "shared\\ufCodes.ts",
+      "line": 40,
+      "exported": true
+    },
+    {
+      "name": "generateDailyReportHtml",
+      "kind": "function",
+      "file": "server\\reports\\dailyReport.ts",
+      "line": 140,
+      "exported": true
+    },
+    {
+      "name": "generateDeclarationHtml",
+      "kind": "function",
+      "file": "server\\reports\\declarationReport.ts",
+      "line": 54,
+      "exported": true
+    },
+    {
+      "name": "generateImage",
+      "kind": "function",
+      "file": "server\\_core\\imageGeneration.ts",
+      "line": 34,
+      "exported": true
+    },
+    {
+      "name": "GenerateImageOptions",
+      "kind": "type",
+      "file": "server\\_core\\imageGeneration.ts",
+      "line": 21,
+      "exported": true
+    }
+  ],
+  "dependencies": {
+    "mostImported": [
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\db.ts",
+        "importedBy": 37
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\_core\\trpc.ts",
+        "importedBy": 18
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\drizzle\\schema.ts",
+        "importedBy": 15
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\_core\\env.ts",
+        "importedBy": 11
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\_core\\logger.ts",
+        "importedBy": 7
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\shared\\textUtils.ts",
+        "importedBy": 4
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\_core\\context.ts",
+        "importedBy": 4
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\email\\crypto.ts",
+        "importedBy": 4
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\routers.ts",
+        "importedBy": 3
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\whatsapp\\service.ts",
+        "importedBy": 3
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\whatsapp\\config.ts",
+        "importedBy": 3
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\whatsapp\\serviceQr.ts",
+        "importedBy": 3
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\storage.ts",
+        "importedBy": 3
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\client\\src\\lib\\trpc.ts",
+        "importedBy": 3
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\whatsapp\\placeholders.ts",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\services\\aiAnalysis.ts",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\server\\_core\\supabaseStorage.ts",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\client\\src\\components\\ui\\button.tsx",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\shared\\bancosBrasil.json",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\ricar\\DevQualital\\G_Antigravity\\Help_Desk_Qualital\\shared\\ufCodes.ts",
+        "importedBy": 1
+      }
+    ]
+  },
+  "stats": {
+    "totalSymbols": 493,
+    "exportedSymbols": 218,
+    "analysisTimeMs": 1117
+  }
+}
+
+

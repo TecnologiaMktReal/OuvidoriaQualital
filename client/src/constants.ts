@@ -38,8 +38,5 @@ export const STRONG_COLORS = [
 ];
 
 export const logos = {
-  blue: "https://aedirlkgmglxotajdnqt.supabase.co/storage/v1/object/sign/image/logo-qualital%20branco.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV83NjJmMDg0OS01ZTU4LTRmNGItOTMzMS03ZjQ2YmJhYjA4ZjAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbWFnZS9sb2dvLWNvb3BlZHUgYnJhbmNvLnBuZyIsImlhdCI6MTc2ODg0NjYyMCwiZXhwIjoyMDg0MjA2NjIwfQ.7LcbABLtVlSjm0CihNQkbrEZ2dQlwt4OHzj7zcAUks8",
+  LOGO_URL: '/logo-qualital.png',
 };
-
-
-

@@ -1,0 +1,88 @@
+# Plano de Ação – Nova Tela de Tickets (lista + detalhe + modo Dashboard)
+
+## Escopo e premissas
+- Tudo roda, por padrão, dentro do menu `Tickets`.
+- O modo Dashboard é opcional, acionado por botão na própria tela de Tickets; abre a mesma experiência em layout destacado (sem menus).
+- Integração direta com WhatsApp: abertura de conversa, envio/resposta, histórico sincronizado, identificação do cooperado.
+- Configurações de Ticket ficam em `Setup de Tickets`; textos/templates ficam em `Mensagens Automáticas`.
+
+## Resumo de mapeamento inicial (atual)
+- Front (Tickets): `client/src/pages/Tickets.tsx` (e `TicketsPlaceholder.tsx`), rotas em `client/src/App.tsx`.  
+- Front (Setup): `client/src/pages/settings/SetupTickets.tsx` (status, motivo/tipo/criticidade, cores, SLA), submenu já no Sidebar.  
+- Front (Mensagens Automáticas): `client/src/pages/settings/MensagensAutomaticas.tsx` (textos/templates usados por Tickets/WhatsApp).  
+- Back (Tickets): `server/routers/tickets.ts`, lógica em `server/db.ts` (tabelas `tickets`, histórico, mensagens).  
+- Back (Setup Tickets): `server/routers/ticketSetup.ts` + `server/db.ts` para CRUD de status/motivo(tipo de atendimento)/tipo/criticidade.  
+- Back (WhatsApp): `server/routers/whatsapp.ts` + `server/whatsapp/service.ts` (envio/recebimento, estados entregue/lido, QR).  
+- Back (Mensagens Automáticas): `server/routers/quickMessages.ts` (templates) e página de settings correspondente.  
+- Banco: tabelas de setup `ticket_statuses`, `ticket_service_types` (motivo/dep/SLA/cor), `ticket_types`, `ticket_criticities`; tickets/log/mensagens em `tickets` e associadas; expediente/feriados em `cooperativa_business_hours` e `cooperativa_holidays`.  
+- Expedição/Feriados: usados para “Fora do horário” e pausa de SLA; já mapeados nas novas tabelas de cooperativa.
+
+## Checklist de tarefas (ordenado)
+
+- [ ] **Mapeamento e alinhamento inicial**  
+  - (Front/Back/DB) Levantar rotas, componentes e modelos atuais de Tickets (`client/src/pages/Tickets*`, `server/routers/tickets.ts`, `server/db.ts`, tabelas relacionadas).  
+  - (Config) Listar o que é configuração de ticket (status, tipo, motivo, criticidade, SLA, expediente/feriados) → alinhar com `Setup de Tickets`.  
+  - (Mensagens) Levantar mensagens automáticas hoje usadas em Tickets/WhatsApp → alinhar com `Mensagens Automáticas`.  
+  - Entregar resumo no topo deste arquivo antes de iniciar implementação.
+
+- [ ] **Dados e modelo (DB/SLA/expediente/feriados)**  
+  - (DB) Confirmar tabelas: `tickets`, `ticket_statuses`, `ticket_service_types` (motivos), `ticket_types`, `ticket_criticities`, `departments`, `cooperados/contratos`, `cooperativa_business_hours`, `cooperativa_holidays`.  
+  - (SLA) Definir campos para SLA total e por etapa/ação; checar necessidade de colunas auxiliares (prazos, pausas, timestamps).  
+  - (Expediente) Garantir uso de `cooperativa_business_hours` + `cooperativa_holidays` para: marcar “Fora do horário”, pausar SLA, evitar atribuição.  
+  - (Migrations) Preparar migrations se novos campos forem requeridos (ex.: níveis de alerta SLA, flag de auto-fechamento por ausência de retorno).
+
+- [ ] **Back-end Tickets (tRPC / serviços)**  
+  - (Back) Revisar router `tickets.ts`: listagem com filtros completos (status, canal, departamento, motivo, criticidade, tipo, responsável, contrato, cooperado, datas, SLA estourado/próximo, fora do horário).  
+  - (Back) Incluir ordenação padrão por chegada e opção de ordenar por prioridade/SLA.  
+  - (Back) Expor endpoints para: pausa/retomada de SLA, auto-fechamento por ausência de retorno, mudança de classificação (motivo → depto/SLA), log de eventos.  
+  - (Back) Garantir cálculo de SLA restante e indicadores de alerta (ex.: 30% atenção, 10% crítico – configuráveis).  
+  - (Back) Expor integração com WhatsApp (enviar/responder, status enviado/entregue/lido, histórico) via serviço existente (`server/whatsapp/service.ts`), mantendo log de mensagens.  
+  - (Segurança) Assegurar RBAC atual (admin/gerente/atendente) nas mutações sensíveis.
+
+- [ ] **Front – Lista de Tickets (menu `Tickets`)**  
+  - (Front) Implementar lista vertical com campos: ID, cooperado, contrato/“Não Cooperado”, canal, status, motivo, criticidade, SLA restante (contador colorido), responsável, indicador “fora do horário”.  
+  - (Front) Filtros combináveis e busca; salvar/recuperar visões.  
+  - (Front) Ordenação padrão por chegada, opção por SLA/prioridade.  
+  - (Front) Ações rápidas: abrir detalhe, mudar status, atribuir responsável (se permitido).
+
+- [ ] **Front – Detalhe de Ticket (painel)**  
+  - (Front) Cabeçalho com status, canal, criticidade+SLA, responsável, departamento, SLA total e SLA da ação atual.  
+  - (Front) Dados do cooperado (nome, e-mail, WhatsApp, contratos) e indicação “Não Cooperado” quando aplicável; botão de sugestão/mesclagem.  
+  - (Front) Classificação editável: motivo (define depto/SLA), tipo, criticidade, status; recalcular SLA exibido.  
+  - (Front) Log/histórico: status, motivo/depto, criticidade, tipo, SLA recalculado, responsável, canal de resposta, mesclagens, pausas/retomadas, anexos removidos.  
+  - (Front) Chat multicanal: WhatsApp preferido; opção e-mail; envio duplo com confirmação; badges de canal e estados (enviado/entregue/lido); suporte a áudio/anexos.  
+  - (Front) Chat interno: aba + marcação “Interno” no histórico; menções a usuários/deptos com notificação.  
+  - (Front) Controles de SLA: pausar/retomar, ver tempos de pausa, exibir alertas (30%/10% ou valores configurados).
+
+- [ ] **Integração direta com WhatsApp**  
+  - (Back/Front) Sincronizar mensagens e estados (enviado/entregue/lido); fechar conversa WhatsApp ao fechar ticket.  
+  - (Front) Botões no detalhe: abrir conversa no módulo WhatsApp, responder direto, ver histórico sincronizado.  
+  - (Back) Garantir identificação de cooperado por e-mail/WhatsApp; se não casar, sugerir mesclagem; registrar no log.
+
+- [ ] **Setup de Tickets vs. Mensagens Automáticas**  
+  - (Config) Deixar no Setup: status, tipos, motivos (depto/SLA), criticidade, níveis de alerta SLA, expediente/feriados.  
+  - (Mensagens) Manter textos/templates de automação (mensagem de fora do horário, auto-fechamento por ausência de retorno, avisos de SLA crítico, confirmação de envio duplo).  
+  - (Front/Back) Garantir que a tela de Tickets consome essas configs corretamente (expediente/feriados para “fora do horário”, mensagens automáticas para avisos/auto-fechamento).
+
+- [ ] **Modo Dashboard (feature por botão)**  
+  - (Front) Botão na tela do menu `Tickets`: “Abrir em modo Dashboard”.  
+  - (Front/Roteamento) Abrir a mesma tela em layout destacado (sem menus laterais/superiores); exibir apenas logomarca e controles: minimizar, maximizar/restaurar, fechar (na UI da app).  
+  - (UX) Visual limpo/dinâmico; mesma funcionalidade da tela principal; respeitar responsividade.  
+  - (Back) Reusar os mesmos endpoints (sem duplicar lógica); apenas muda a casca/layout.
+
+- [ ] **Desempenho e UX**  
+  - (Front) Paginação/infinite scroll na lista; cache/query com React Query; otimizar re-render.  
+  - (Back) Paginação e filtros eficientes (indices para status/depto/motivo/SLA/tempo); evitar N+1.  
+  - (Front) Atalhos/ações rápidas para mudar status/atribuir; poucos cliques para responder e mudar status.
+
+- [ ] **Testes e validação**  
+  - (Back) Testar APIs de listagem/filtros, mudança de status, SLA (pausa/retomada), auto-fechamento, integrações WhatsApp.  
+  - (Front) Testar fluxos: abrir ticket, responder (WA/e-mail), mudar classificação, pausar/retomar SLA, salvar/recuperar filtros, modo Dashboard.  
+  - (Dados) Validar “fora do horário” com expediente/feriados da cooperativa.
+
+- [ ] **Entrega e migração**  
+  - (Ops) Confirmar migrações já aplicadas (horários/feriados, setup tickets).  
+  - (Docs) Atualizar README/IMP_LocalHost com variáveis de ambiente relevantes (WhatsApp, PUPPETEER_EXECUTABLE_PATH).  
+  - (Rollout) Planejar feature flag ou rollout gradual do modo Dashboard (opcional).
+
+

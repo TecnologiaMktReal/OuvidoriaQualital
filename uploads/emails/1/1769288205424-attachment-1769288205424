@@ -1,0 +1,86 @@
+X-Received: by 2002:a05:620a:4149:b0:8c6:a72f:fd56 with SMTP id af79cd13be357-8c6e2db184amr57858985a.29.1769106669911;
+        Thu, 22 Jan 2026 10:31:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769106669; cv=none;
+        d=google.com; s=arc-20240605;
+        b=j4YAe/71xOjKf5RW0RQeq0m4FwXNaX9NRFQAAhMGIlbmetv3wCqdiNW4iH3c8+CSob
+         3oGKTGpKmkjELcOORg0uiv10p9RRiPvR/5mcSI1HCOFcgarAxvFyxlTNS//Rc8+tzgB6
+         DCx3CWY0QwjhKyWZ0+FyP+hZ81bacA5LUrpC8tcrPq6+mlDa0b5yhHCsgWrJGSmop72u
+         3KKOG+WyhkwW0ySyisOg7/qYYWiTuEOb3vzYuF+MqsZW+BVSPxstd2y2shPIVdl3QgJP
+         ysjqg4feUqm//YZItX9Dcc711gyHK467lQfuO93Ef6hSS9jmrrfcd6PFTWe8CFiqWH9C
+         kcbw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:subject:to:from:date:mime-version
+         :message-id:dkim-signature;
+        bh=MI7Xpu+bkdej0e+MFiPKYBKeHlCgxo5I4H6+81f+zO4=;
+        fh=ybXJ9BvnDYlGhpaRzZc5UaeaXG+JxzVn2McuzSFWa50=;
+        b=cd2Aqr/NmnnEYuudjKhOjtW9svAvk5We3fzUdcG6Dzf+yjwOCUtbO9uIaKLDTjKpcW
+         IDE81crUM9yuH/UiaWT7kzFkUGbBj5XQTqKgjNH3LOd8fmd0i1i1xgv4X+sM1Eu3YyyS
+         pZT2Ftvl5BWPjL4bNIIUgngzv9/uFQ83wzonq6H5vI3btJrq+sO35SmeR4wpl20k67kA
+         5kCSy+AKyal++Sd+CxIv+H74XWbpDqcmEQfKoICZ1Oaz3rxrFWX2Xn3EjHtnPiR7o41L
+         xmITrmbnalLdlo1PWLYeKFn3UxoEg9d2orfeHQQXkhlp2IpV1RcCyQl6XjK+DPdSw9rw
+         tCCA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@coopedu.com.br header.s=google header.b=G4NHWjmL;
+       spf=none (google.com: atendimento@coopedu.com.br does not designate permitted sender hosts) smtp.mailfrom=atendimento@coopedu.com.br;
+       dara=neutral header.i=@coopedu.com.br
+Return-Path: <atendimento@coopedu.com.br>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id af79cd13be357-8c6e37d7356sor2855385a.7.2026.01.22.10.31.09
+        for <jeferson.rodrguis@coopedu.com.br>
+        (Google Transport Security);
+        Thu, 22 Jan 2026 10:31:09 -0800 (PST)
+Received-SPF: none (google.com: atendimento@coopedu.com.br does not designate permitted sender hosts) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@coopedu.com.br header.s=google header.b=G4NHWjmL;
+       spf=none (google.com: atendimento@coopedu.com.br does not designate permitted sender hosts) smtp.mailfrom=atendimento@coopedu.com.br;
+       dara=neutral header.i=@coopedu.com.br
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=coopedu.com.br; s=google; t=1769106669; x=1769711469; darn=coopedu.com.br;
+        h=content-transfer-encoding:subject:to:from:date:mime-version
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=MI7Xpu+bkdej0e+MFiPKYBKeHlCgxo5I4H6+81f+zO4=;
+        b=G4NHWjmLloS9FNEHOarGFi8nQr9auo64jx+ECLbdBKM0K6fYwFi4b2wq4s25mlFD7p
+         5bclkIOo52KyCyPJRH0LRt/T3dbxJIADj5l3DT2BfW/UGUKHHkXGVZr1x9fxgNEJlgoH
+         H3jQkUHyBVK0bkfT0davatX0CO7VTHEWu4VlE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1769106669; x=1769711469;
+        h=content-transfer-encoding:subject:to:from:date:mime-version
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MI7Xpu+bkdej0e+MFiPKYBKeHlCgxo5I4H6+81f+zO4=;
+        b=oixqjBZ68WYjaJYzq81GzRFWQNkxmyTZ3vmku1CvvA5lu4mUpGG6GAs+lKS6Ic1mKZ
+         VsFDcL2LQq/viUmNlbeEmdGZ5BEb1GxRgi1zPbVhPIhm9f0hPEi+a96L2dKgF8jgNIms
+         b0vONh1XRECWxnnm0f+C5Rkcd850oi/P3mwlCuRPUFvEwlSO1TtOesEOeeqzMd9lvCnD
+         Fod6KSfn4Ghk29GL390TRg5pzx286iyEST3pqW+n6ls97KhhkhuEEGVU9NTARUrny5n1
+         +99aQCZW3hlZ4GqgJR/FcR4hcXvosYDqG+1NgolVKAEanS3wD9OQcjKmcgIkMOEDLr2G
+         TumQ==
+X-Gm-Message-State: AOJu0YxuGIMVUptwEGb9dh9CyZSOuQh1am6SBil65pdwMfHLAFFMapWw
+	5JS0k3NNCjHW02EO5A/93fdKc6ydyKwgn+LeHf/ItUBnImu4J2vCpL3pzapHZNlhw3hfTd/bnNn
+	XfNFOrkszbw==
+X-Gm-Gg: AZuq6aI+D3ETFNJGmuWeI4nHFUyqO8YLDiXtnsPv2mpsWmdQsGvlJBUvtw7jDA+wrlN
+	h2F3BjTW2lGihd5sjl10b4S82WQH++Nn9NzKGqkSnf7mwLuz2xdgSbhk7gSStWnAmR6rn1K6tOB
+	Jq4oq84gZ0FAgBQLgUg9P0ya+mNilFAQMJXfHi6qPk6AxaDx7rCNEeD7/T9l+hwfZyYF2EiBfkf
+	RT1zYcXd/w1QzLqbksV359SY5ChSyE0pQW46XuhfHNByssll6c9JVvIJlhZEOnlm2kGHLKsdqw4
+	Bkl+PUxO5mdSCmZX8LFVtxcp7Fq6lx+7ycVnDIGp+06A0WYSZz+0yYgGTyF5H8s8mR61akh6VjJ
+	s0zkGSn9aCUbAZwT6lc4SmQmLPoRakPiOk5fE00AvyASSzzmAOsPngDFsbb2nl31ITiGGCyEvwr
+	UOkiqXi71Z4JoBAk+AqQ0VikU5Uty0MqFIWxm9hKytNHn/FQawXkU=
+X-Received: by 2002:a05:620a:710c:b0:8b2:e922:5297 with SMTP id af79cd13be357-8c6e2d94638mr58030985a.21.1769106668302;
+        Thu, 22 Jan 2026 10:31:08 -0800 (PST)
+Return-Path: <atendimento@coopedu.com.br>
+Received: from aedirlkgmglxotajdnqt.supabase.co ([2600:1f16:1cd0:3335:d854:fe99:eda5:6339])
+        by smtp.gmail.com with UTF8SMTPSA id 6a1803df08f44-89491845f52sm258506d6.22.2026.01.22.10.31.07
+        for <jeferson.rodrguis@coopedu.com.br>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 22 Jan 2026 10:31:07 -0800 (PST)
+Message-ID: <69726ceb.0c0a0220.29a34b.5c59@mx.google.com>
+Mime-Version: 1.0
+Date: Thu, 22 Jan 2026 18:31:07 +0000
+From: "Sistema Help-Desk Coopedu" <atendimento@coopedu.com.br>
+To: jeferson.rodrguis@coopedu.com.br
+Subject: =?UTF-8?q?[COOPEDU]_=E2=9C=85_Ativa=C3=A7=C3=A3o_Sistema_Help_Desk_Cooper?=
+ =?UTF-8?q?ativas?=
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+

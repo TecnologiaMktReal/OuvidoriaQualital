@@ -1,0 +1,5 @@
+spawn pnpm run db:push
+expect "Is acronym column" { send "" }
+expect "Statements" { send "y\r" }
+expect eof
+

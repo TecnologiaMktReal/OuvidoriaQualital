@@ -1,0 +1,91 @@
+# Tarefas – Ajustes da Tela de Chat dos Tickets
+
+Objetivo:
+Ajustar e evoluir a tela de chat dos tickets (atendimento ao cooperado), melhorando usabilidade, funcionalidades de envio e controle de encerramento de chat x fechamento de ticket.
+
+Contexto resumido:
+- Tela de chat integrada ao ticket de atendimento.
+- Cooperado se comunica via chat (WhatsApp / outros canais).
+- Precisamos separar claramente:
+  - Encerrar apenas a conversa (chat).
+  - Fechar o ticket por completo.
+- Incluir envio de texto, áudio e anexos de forma estável e intuitiva.
+
+----------------------------------------------------------------------
+CHECKLIST DE TAREFAS
+----------------------------------------------------------------------
+
+[x] 1. Ajustar layout do card da conversa  
+    - Aumentar o card ou a área de exibição da mensagem.  
+    - Garantir que todo o texto apareça sem ser cortado.  
+    - Se necessário, habilitar rolagem interna mantendo legibilidade.  
+
+[ ] 2. Botão "Encerrar chat" (apenas conversa, não o ticket)  
+    - Criar botão "Encerrar chat" ao lado do campo de digitação.  
+    - Estilizar em vermelho, visualmente bonito e em destaque.  
+    - Implementar a lógica para:  
+      - Encerrar a conversa atual (não permitir novos envios nesta sessão).  
+      - Manter o ticket aberto.  
+      - Em um novo contato do cooperado, reusar o MESMO ticket.  
+
+[ ] 3. Botão "Fechar Ticket"  
+    - Criar botão "Fechar Ticket" ao lado do campo de digitação (junto ao "Encerrar chat").  
+    - Implementar a lógica para:  
+      - Encerrar a conversa e FECHAR o ticket.  
+      - Em novo contato do cooperado, criar um NOVO ticket.  
+    - Garantir que status do ticket seja atualizado corretamente (ex.: Fechado).  
+
+[x] 4. Correção do envio de texto  
+    - Garantir que o texto digitado seja enviado corretamente para o cooperado.  
+    - Implementar envio por:  
+      - Clique no botão de envio.  
+      - Tecla Enter (se não conflitar com outro atalho).  
+    - Exibir imediatamente a mensagem na linha do chat, com horário e identificando que foi enviada pelo atendente.  
+
+[ ] 5. Envio de áudio  
+    - Adicionar ícone/botão de microfone no chat.  
+    - Implementar fluxo para gravar e enviar mensagem de áudio.  
+    - Exibir no histórico do chat o "card" de áudio (com botão de play).  
+    - Garantir compatibilidade com o canal (ex.: WhatsApp) e tratamento de erros.  
+
+[ ] 6. Envio de anexos  
+    - Adicionar ícone/botão de anexar arquivo (clipe, por exemplo).  
+    - Permitir envio de documentos / imagens (respeitando limites de tamanho e tipos).  
+    - Exibir no chat uma representação do anexo (nome, ícone, preview se aplicável).  
+    - Tratar falhas de upload e exibir mensagens de erro amigáveis.  
+
+[x] 7. Correção do número de telefone exibido  
+    - Verificar de onde está vindo o número atual `5598111203438`.  
+    - Ajustar para exibir o número correto: `5585996297500`.  
+    - Garantir que, em produção, o número mostrado seja sempre o correto para o cooperado.  
+
+[x] 8. Remover texto "Whatsapp" antes do número  
+    - Remover qualquer rótulo desnecessário (ex.: "Whatsapp:" antes do número).  
+    - Exibir apenas o número puro ou formatado (ex.: +55 (85) 99629-7500), sem prefixo de texto.  
+
+[ ] 9. Revisão visual e de UX  
+    - Conferir se os novos botões e ícones estão alinhados com o padrão visual do sistema.  
+    - Ajustar espaçamentos, cores e estados de hover/disabled.  
+    - Validar se a interface continua clara mesmo com mais ações (encerrar chat, fechar ticket, anexos, áudio).  
+
+[ ] 10. Testes finais  
+    - Testar:  
+      - Envio de texto (clique e Enter).  
+      - Encerrar chat (ticket permanece aberto).  
+      - Fechar ticket (nova conversa gera novo ticket).  
+      - Envio de áudio.  
+      - Envio de anexos.  
+      - Exibição do número correto e sem prefixo "Whatsapp".  
+    - Registrar problemas encontrados e corrigi-los antes de homologar.  
+
+----------------------------------------------------------------------
+ANOTAÇÕES / DÚVIDAS A ALINHAR
+----------------------------------------------------------------------
+- Definir limite de tamanho e tipo de arquivo para anexos.  
+- Confirmar comportamento do Enter (enviar sempre ou usar combinação, ex.: Ctrl+Enter).  
+- Validar quais status de ticket serão usados ao "Fechar Ticket".  
+- Confirmar se existe log/registro específico para ações "Encerrar chat" e "Fechar Ticket".  
+
+
+
+

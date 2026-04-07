@@ -1,0 +1,42 @@
+{
+  "mcpServers": {
+    "mysql": {
+      "command": "npx",
+      "args": ["-y", "@benborla29/mcp-server-mysql"],
+      "env": {
+        "MYSQL_HOST": "127.0.0.1",
+        "MYSQL_PORT": "3333",
+        "MYSQL_USER": "root",
+        "MYSQL_PASS": "root",
+        "MYSQL_DB": "QualitalOuvidoria",
+        "ALLOW_INSERT_OPERATION": "true",
+        "ALLOW_UPDATE_OPERATION": "true",
+        "ALLOW_DELETE_OPERATION": "true"
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "SUA_CHAVE_AQUI_OU_VARIAVEL_DE_AMBIENTE"
+      }
+    },
+    "browser-qa": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    },
+    "TestSprite": {
+      "command": "npx",
+      "args": ["-y", "@testsprite/testsprite-mcp@latest"],
+      "env": {
+        "API_KEY": "sk-user-m0T4geFdG5A6p-4AOuxgH6UtQwGPpr0uKhdCAkruRPWPKWDalCcagvWYARB30BNYWXtTTJ0OjPMRoRXLjzKgkWvoD3LRMucLJOzY56yt85t1vr_z7_c3hUm5v_vOVjgjjk8"
+      }
+    }
+  }
+}
+
+

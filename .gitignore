@@ -119,10 +119,16 @@ node_modules/
 .wwebjs_auth/
 
 # Large files
+# Database volumes
+mysql_data_qualital/
+*.sql
+*.pem
+*.txt
+*.gz
 *.zip
-V.zip
 
 # 🔧 Arquivos temporários de correção (DELETAR APÓS USO)
 fix-admin-role.sql
-INSTRUCOES-FIX-ADMIN.mddeploy_package.tar.gz
+INSTRUCOES-FIX-ADMIN.md
+deploy_package.tar.gz
 .env

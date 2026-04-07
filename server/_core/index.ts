@@ -153,7 +153,7 @@ async function startServer() {
           <body>
             <div class="card">
               <div style="margin-bottom: 25px;">
-                <img src="/logo-qualital-branco.png" alt="Qualital" width="225" style="display: block; margin: 0 auto;">
+                <img src="https://weffbletaurdncdmauoa.supabase.co/storage/v1/object/public/QUALITAL/LogoVertGreen.png" alt="Qualital" width="225" style="display: block; margin: 0 auto;">
               </div>
               <div class="icon">✅</div>
               <h1>Obrigado!</h1>

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: QualitalOuvidoria
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: QualitalOuvidoria
+    ports:
+      - "3333:3306"
+    volumes:
+      - ./mysql_data_qualital:/var/lib/mysql
+    networks:
+      - qualital-network
+
+networks:
+  qualital-network:
+    driver: bridge
+

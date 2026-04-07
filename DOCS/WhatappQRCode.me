@@ -1,0 +1,24 @@
+# Plano: Integração WhatsApp Tipo 2 (QR Code)
+
+- [x] Definir modo de integração ativo (`cloud_api` vs `qr`) e persistir escolha
+- [x] Modelar/ajustar tabela `whatsapp_sessions` (type, sessionData, lastQrAt, lastError, status)
+- [x] Criar service QR (`server/whatsapp/serviceQr.ts`) com lifecycle (init, QR, ready, disconnect)
+- [x] Gate de envio/recebimento: usar o service conforme `activeType`
+- [x] Endpoints tRPC (admin): getMode/setMode, initializeQr, getStatusQr, getQrCode, disconnectQr
+- [x] UI Setup WhatsApp: seletor de tipo, card QR com status, QR, botões (gerar/desconectar)
+- [x] Persistir sessão QR no DB (criptografada) e lidar com reconexão/timeout
+- [x] Documentar variáveis/env específicas do QR e riscos/limitações
+
+## Variáveis QR (sugeridas)
+- WHATSAPP_QR_ENABLED=true
+- WHATSAPP_QR_SESSION_NAME=helpdesk-coopedu-qr
+- WHATSAPP_QR_HEADLESS=true
+- WHATSAPP_QR_INIT_TIMEOUT_MS=30000
+
+## Riscos / limitações QR
+- Sessão estilo WhatsApp Web pode expirar; requer re-scan. Reconexão automática tenta reiniciar, mas pode falhar.
+- Necessita Chromium/Chrome e recursos de CPU/memória; em múltiplos pods é preciso lock/coordenação.
+- Potencial risco de bloqueio se violar termos do WhatsApp; preferir Cloud API quando possível.
+- QR exposto só a admins; evitar armazenar QR de forma permanente.
+
+
