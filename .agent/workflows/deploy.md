@@ -1,178 +1,47 @@
 ---
-description: Deployment command for production releases. Pre-flight checks and deployment execution.
+description: Pipeline automatizado de deploy para AWS EC2 (ouvidoriaqualital.ricass.com.br).
 ---
 
-# /deploy - Production Deployment
+# /deploy - AWS Production Deployment
 
 $ARGUMENTS
 
----
+// turbo-all
 
-## Purpose
+## Objetivo
 
-This command handles production deployment with pre-flight checks, deployment execution, and verification.
-
----
-
-## Sub-commands
-
-```
-/deploy            - Interactive deployment wizard
-/deploy check      - Run pre-deployment checks only
-/deploy preview    - Deploy to preview/staging
-/deploy production - Deploy to production
-/deploy rollback   - Rollback to previous version
-```
+Este workflow gerencia o processo de publicação (deploy) da aplicação OuvidoriaQualital diretamente na máquina de produção na AWS (EC2). 
+Com a anotação `// turbo-all`, o Agente possui autorização (Bypass) para rodar a esteira de SSH silenciosamente sempre que o usuário invocar o slash command.
 
 ---
 
-## Pre-Deployment Checklist
+## Roteiro de Execução do Bot (Automático)
 
-Before any deployment:
+Ao ser acionado `/deploy` ou `/deploy aws`, o assistente deve obrigatoriamente executar as seguintes etapas:
 
-```markdown
-## 🚀 Pre-Deploy Checklist
+1. **Commit Local (Opcional)**
+   - O assistente deve verificar antes com `git status` se há algo novo para commitar.
+   - O assistente tentará o `git push`. Caso trave por conta de credenciais do Windows, avisará o usuário para dar o push.
 
-### Code Quality
-- [ ] No TypeScript errors (`npx tsc --noEmit`)
-- [ ] ESLint passing (`npx eslint .`)
-- [ ] All tests passing (`npm test`)
+2. **Conexão SSH & Build Automático (Pipeline EC2)**
+   - O assistente executará o seguinte comando remoto *em background*:
+   ```bash
+   ssh -i C:\Users\ricar\Downloads\OuvidoriaQualital.pem -o StrictHostKeyChecking=no ubuntu@ouvidoriaqualital.ricass.com.br "cd ~/app/OuvidoriaQualital && git stash && git pull && pnpm install --no-frozen-lockfile && pnpm run build && pm2 restart all"
+   ```
+   *Nota técnica: O `pnpm install --no-frozen-lockfile` garante que conflitos antigos de patch não paralizem o deploy na hora do sync.*
 
-### Security
-- [ ] No hardcoded secrets
-- [ ] Environment variables documented
-- [ ] Dependencies audited (`npm audit`)
+3. **Validação e Logs**
+   - Na sequência, o assistente verifica se a aplicação subiu com a versão correta conferindo a tabela do PM2:
+   ```bash
+   ssh -i C:\Users\ricar\Downloads\OuvidoriaQualital.pem -o StrictHostKeyChecking=no ubuntu@ouvidoriaqualital.ricass.com.br "pm2 status"
+   ```
 
-### Performance
-- [ ] Bundle size acceptable
-- [ ] No console.log statements
-- [ ] Images optimized
-
-### Documentation
-- [ ] README updated
-- [ ] CHANGELOG updated
-- [ ] API docs current
-
-### Ready to deploy? (y/n)
-```
+4. **Notificação Visual**
+   - Imprima um alerta Github verde `> [!NOTE]` indicando o sucesso do Deploy juntamente com o log resumido do PM2.
 
 ---
 
-## Deployment Flow
-
-```
-┌─────────────────┐
-│  /deploy        │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Pre-flight     │
-│  checks         │
-└────────┬────────┘
-         │
-    Pass? ──No──► Fix issues
-         │
-        Yes
-         │
-         ▼
-┌─────────────────┐
-│  Build          │
-│  application    │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Deploy to      │
-│  platform       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Health check   │
-│  & verify       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  ✅ Complete    │
-└─────────────────┘
-```
-
----
-
-## Output Format
-
-### Successful Deploy
-
-```markdown
-## 🚀 Deployment Complete
-
-### Summary
-- **Version:** v1.2.3
-- **Environment:** production
-- **Duration:** 47 seconds
-- **Platform:** Vercel
-
-### URLs
-- 🌐 Production: https://app.example.com
-- 📊 Dashboard: https://vercel.com/project
-
-### What Changed
-- Added user profile feature
-- Fixed login bug
-- Updated dependencies
-
-### Health Check
-✅ API responding (200 OK)
-✅ Database connected
-✅ All services healthy
-```
-
-### Failed Deploy
-
-```markdown
-## ❌ Deployment Failed
-
-### Error
-Build failed at step: TypeScript compilation
-
-### Details
-```
-error TS2345: Argument of type 'string' is not assignable...
-```
-
-### Resolution
-1. Fix TypeScript error in `src/services/user.ts:45`
-2. Run `npm run build` locally to verify
-3. Try `/deploy` again
-
-### Rollback Available
-Previous version (v1.2.2) is still active.
-Run `/deploy rollback` if needed.
-```
-
----
-
-## Platform Support
-
-| Platform | Command | Notes |
-|----------|---------|-------|
-| Vercel | `vercel --prod` | Auto-detected for Next.js |
-| Railway | `railway up` | Needs Railway CLI |
-| Fly.io | `fly deploy` | Needs flyctl |
-| Docker | `docker compose up -d` | For self-hosted |
-
----
-
-## Examples
-
-```
-/deploy
-/deploy check
-/deploy preview
-/deploy production --skip-tests
-/deploy rollback
-```
-
-
+## Exemplo de gatilhos suportados pelo usuário:
+`/deploy`
+`/deploy aws`
+`/deploy prod`
