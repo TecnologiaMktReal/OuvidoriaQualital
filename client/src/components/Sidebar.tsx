@@ -269,19 +269,6 @@ type SidebarContextValue = {
 
 const SidebarContext = createContext<SidebarContextValue | null>(null);
 
-const customStyles = `
-  @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  .animate-spin-slow {
-    animation: spin-slow 25s linear infinite;
-  }
-  .animate-spin-slower {
-    animation: spin-slow 40s linear infinite reverse;
-  }
-`;
-
 function useSidebarContext() {
   const ctx = useContext(SidebarContext);
   if (!ctx) throw new Error("SidebarContext não encontrado");
@@ -366,16 +353,13 @@ export default function Sidebar() {
 
   return (
     <div className="relative h-screen">
-      <style>{customStyles}</style>
       <SidebarContext.Provider value={{ expanded, setExpanded, activeItem, setActiveItem }}>
         <aside
           className={cn(
-            "h-full relative flex flex-col bg-white text-slate-600 transition-all duration-300 ease-in-out border-r border-slate-200 shadow-xl overflow-hidden",
+            "h-full relative flex flex-col bg-white text-[#2C413D] transition-all duration-300 ease-in-out border-r border-slate-200 shadow-xl overflow-hidden",
             expanded ? "w-72" : "w-20"
           )}
         >
-          <BackgroundFX />
-
           {/* Header */}
           <div className="relative h-32 flex items-center justify-center z-10">
             <HeaderLogo expanded={expanded} />
@@ -421,11 +405,11 @@ export default function Sidebar() {
           </ul>
 
           {/* Footer */}
-          <div className={cn("relative z-10 border-t border-slate-800 p-3 transition-all duration-300 space-y-2", expanded ? "" : "flex flex-col items-center")}>
+          <div className={cn("relative z-10 border-t border-[#2C413D]/20 p-3 transition-all duration-300 space-y-2", expanded ? "" : "flex flex-col items-center")}>
             <ModeToggle expanded={expanded} />
             <div
               className={cn(
-                "flex items-center gap-3 rounded-xl p-2 cursor-pointer hover:bg-slate-800/50 transition-colors group",
+                "flex items-center gap-3 rounded-xl p-2 cursor-pointer hover:bg-[#2C413D]/10 transition-colors group",
                 expanded ? "" : "justify-center"
               )}
             >
@@ -433,26 +417,26 @@ export default function Sidebar() {
                 <img
                   src={sidebarAvatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(sidebarNickname)}&background=0ea5e9&color=fff`}
                   alt="Avatar"
-                  className="w-10 h-10 rounded-full border-2 border-slate-700 shadow-sm group-hover:border-blue-500 transition-colors object-cover"
+                  className="w-10 h-10 rounded-full border-2 border-slate-200 shadow-sm group-hover:border-[#2C413D] transition-colors object-cover"
                 />
-                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#0f172a] rounded-full" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full" />
               </div>
 
               <div className={cn("flex justify-between items-center overflow-hidden transition-all duration-300", expanded ? "w-40 opacity-100 ml-1" : "w-0 opacity-0")}>
                 <div className="leading-4 text-left">
-                  <h4 className="font-semibold text-slate-900 text-sm truncate">{sidebarNickname}</h4>
-                  <div className="text-xs text-slate-500 leading-tight flex flex-col uppercase tracking-tighter">
+                  <h4 className="font-semibold text-[#2C413D] text-sm truncate">{sidebarNickname}</h4>
+                  <div className="text-xs text-[#2C413D]/70 leading-tight flex flex-col uppercase tracking-tighter">
                     <span className="truncate">{sidebarProfileLabel || effectiveRole}</span>
                     {sidebarDepartmentLabel && <span className="truncate">{sidebarDepartmentLabel}</span>}
                   </div>
                 </div>
-                <Settings size={16} className="text-slate-500 group-hover:text-white transition-colors" />
+                <Settings size={16} className="text-[#2C413D]/70 group-hover:text-white transition-colors" />
               </div>
             </div>
 
             <button
               className={cn(
-                "mt-3 w-full flex items-center justify-center gap-2 rounded-lg border border-slate-700/70 text-slate-300 hover:text-white hover:border-slate-500 px-3 py-2 transition-all",
+                "mt-3 w-full flex items-center justify-center gap-2 rounded-lg border border-[#2C413D]/20 text-[#2C413D]/80 hover:text-[#2C413D] hover:border-[#2C413D]/50 hover:bg-[#2C413D]/5 px-3 py-2 transition-all",
                 expanded ? "" : "p-2 w-10 h-10"
               )}
               onClick={handleLogout}
@@ -469,22 +453,6 @@ export default function Sidebar() {
   );
 }
 
-function BackgroundFX() {
-  return (
-    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-      <svg className="absolute -top-10 -left-10 w-64 h-64 text-primary/80/20 animate-spin-slow blur-xl" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M50 0 L100 100 L0 100 Z" />
-      </svg>
-      <svg className="absolute top-1/3 -right-20 w-80 h-80 text-primary/10 animate-spin-slower blur-xl" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M50 0 L100 100 L0 100 Z" />
-      </svg>
-      <svg className="absolute -bottom-20 -left-10 w-96 h-96 text-primary/20 animate-spin-slow blur-2xl" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M50 0 L100 100 L0 100 Z" />
-      </svg>
-    </div>
-  );
-}
-
 function HeaderLogo({ expanded }: { expanded: boolean }) {
   return (
     <>
@@ -497,7 +465,7 @@ function HeaderLogo({ expanded }: { expanded: boolean }) {
         <img
           src="/logo-qualital.png"
           alt="Qualital Logo"
-          className="h-20 object-contain drop-shadow-sm"
+          className="h-20 object-contain drop-shadow-sm scale-110"
         />
         <span className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/80 uppercase tracking-widest whitespace-nowrap drop-shadow-sm text-center">
           Sistema Interno Ouvidoria
@@ -559,13 +527,13 @@ function SidebarItem({
         baseClasses,
         isActive
           ? "bg-gradient-to-r from-primary to-primary/90 text-white shadow-md shadow-primary/20"
-          : "text-slate-500 hover:bg-slate-100 hover:text-primary",
+          : "text-[#2C413D]/80 hover:bg-slate-100 hover:text-[#2C413D]",
         !expanded && "justify-center"
       )}
       onClick={handleClick}
       title={!expanded ? item.name : undefined}
     >
-      <span className={cn(isActive ? "text-white" : "text-slate-400 group-hover:text-primary", "transition-colors duration-200")}>
+      <span className={cn(isActive ? "text-white" : "text-[#2C413D]/60 group-hover:text-[#2C413D]", "transition-colors duration-200")}>
         <item.icon className="h-5 w-5" />
       </span>
       <span className={cn("overflow-hidden transition-all duration-300 ease-in-out", expanded ? "w-44 ml-3 opacity-100" : "w-0 ml-0 opacity-0")}>
@@ -583,7 +551,7 @@ function SidebarItem({
             </span>
           )}
           {hasSubmenu && (
-            <ChevronDown size={14} className={cn("transition-transform duration-300", isOpen ? "rotate-180 text-primary/80" : "text-slate-400")} />
+            <ChevronDown size={14} className={cn("transition-transform duration-300", isOpen ? "rotate-180 text-primary/80" : "text-[#2C413D]/50")} />
           )}
         </div>
       )}
@@ -600,7 +568,7 @@ function SidebarItem({
             expanded && isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           )}
         >
-          <ul className="pl-4 ml-3 border-l-2 border-slate-800 space-y-1 my-1 pb-2">{children}</ul>
+          <ul className="pl-4 ml-3 border-l-2 border-[#2C413D]/20 space-y-1 my-1 pb-2">{children}</ul>
         </div>
       </>
     );
@@ -628,13 +596,13 @@ function NestedSubmenu({ item, currentPath }: { item: NavItem; currentPath: stri
       <button
         type="button"
         className={cn(
-          "w-full flex items-center justify-between p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 text-sm transition-colors group",
-          open && "bg-slate-800/60 text-white"
+          "w-full flex items-center justify-between p-2 rounded-lg text-[#2C413D]/80 hover:text-[#2C413D] hover:bg-[#2C413D]/5 text-sm transition-colors group",
+          open && "bg-[#2C413D]/10 font-medium text-white"
         )}
         onClick={() => setOpen((v) => !v)}
       >
         <div className="flex items-center gap-3">
-          <span className="text-slate-500 group-hover:text-primary/80 transition-colors">
+          <span className="text-[#2C413D]/60 group-hover:text-[#2C413D] transition-colors">
             <item.icon className="h-4 w-4" />
           </span>
           <span className={cn(!expanded && "sr-only")}>{item.name}</span>
@@ -643,7 +611,7 @@ function NestedSubmenu({ item, currentPath }: { item: NavItem; currentPath: stri
           size={14}
           className={cn(
             "transition-transform duration-300",
-            open ? "rotate-180 text-primary/80" : "text-slate-400"
+            open ? "rotate-180 text-primary/80" : "text-[#2C413D]/50"
           )}
         />
       </button>
@@ -653,7 +621,7 @@ function NestedSubmenu({ item, currentPath }: { item: NavItem; currentPath: stri
           open ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
         )}
       >
-        <ul className="pl-4 ml-2 mt-1 space-y-1 border-l border-slate-800/60">
+        <ul className="pl-4 ml-2 mt-1 space-y-1 border-l border-[#2C413D]/20">
           {item.submenu?.map((sub) => (
             <SubItem key={sub.name} item={sub} isActive={currentPath === sub.href} />
           ))}
@@ -679,12 +647,12 @@ function SubItem({ item, isActive }: { item: NavItem; isActive: boolean }) {
           setActiveItem(item.name);
         }}
         className={cn(
-          "flex items-center justify-between p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 cursor-pointer text-sm transition-colors group",
-          isActive && "bg-slate-800/60 text-white"
+          "flex items-center justify-between p-2 rounded-lg text-[#2C413D]/80 hover:text-[#2C413D] hover:bg-[#2C413D]/5 cursor-pointer text-sm transition-colors group",
+          isActive && "bg-[#2C413D]/10 font-medium text-white"
         )}
       >
         <div className="flex items-center gap-3">
-          <span className="text-slate-500 group-hover:text-primary/80 transition-colors">
+          <span className="text-[#2C413D]/60 group-hover:text-[#2C413D] transition-colors">
             <item.icon className="h-4 w-4" />
           </span>
           <span className={cn(!expanded && "sr-only")}>{item.name}</span>
