@@ -83,7 +83,7 @@ export async function ensureProfileRecord(
 }
 
 export async function syncSupabaseUsersToDatabase() {
-  if (disableSupabaseAdmin) return;
+
   const supabase = getSupabaseAdminClient();
   if (!supabase) return;
 

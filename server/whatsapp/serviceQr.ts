@@ -1219,7 +1219,7 @@ async function handleIncomingMessageQr(message: Message) {
             protocol: result.protocol,
             externalName: (contact as any)?.pushname || (contact as any)?.name || null
           },
-          Cliente: (Cliente as any) || null,
+          cliente: Cliente || null,
           attendantName: "Atendente Virtual",
           departmentName: departmentName,
           contractName: contractName

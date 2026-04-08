@@ -224,7 +224,7 @@ export default function AlertasGestao() {
                                         <UserMultiSelect 
                                             users={users}
                                             selectedIds={config.whatsappRecipients || []}
-                                            onChange={(ids) => handleUpdate(config, { whatsappRecipients: ids })}
+                                            onChange={(ids: number[]) => handleUpdate(config, { whatsappRecipients: ids })}
                                             placeholder="Selecionar usuários..."
                                         />
                                     </div>
@@ -253,7 +253,7 @@ export default function AlertasGestao() {
                                         <UserMultiSelect 
                                             users={users}
                                             selectedIds={config.emailRecipients || []}
-                                            onChange={(ids) => handleUpdate(config, { emailRecipients: ids })}
+                                            onChange={(ids: number[]) => handleUpdate(config, { emailRecipients: ids })}
                                             placeholder="Selecionar usuários..."
                                         />
                                     </div>

@@ -4,7 +4,7 @@ export interface PlaceholderContext {
     protocol: string;
     externalName?: string | null;
   };
-  Cliente?: {
+  cliente?: {
     name?: string | null;
   } | null;
   attendantName?: string;
@@ -33,8 +33,8 @@ export function replaceMessagePlaceholders(message: string, context: Placeholder
   processed = processed.replace(/{{id}}/g, String(context.ticket.id));
 
   // Cliente Name
-  const displayName = (context.Cliente && context.Cliente.name && !context.Cliente.name.startsWith("WhatsApp ")) 
-    ? context.Cliente.name 
+  const displayName = (context.cliente && context.cliente.name && !context.cliente.name.startsWith("WhatsApp ")) 
+    ? context.cliente.name 
     : (context.ticket.externalName || "");
   processed = processed.replace(/{{name}}/g, displayName);
 

@@ -137,7 +137,7 @@ export default function AgendamentoEnvio() {
     formState: { errors },
     setValue,
     watch,
-  } = useForm<ScheduleFormValues>({
+  } = useForm({
     resolver: zodResolver(scheduleSchema),
     defaultValues: {
       name: "",
@@ -146,8 +146,8 @@ export default function AgendamentoEnvio() {
       scheduleTime: "08:00",
       frequency: "daily",
       message: "",
-      channels: ["email"],
-      recipients: [],
+      channels: ["email"] as ("whatsapp" | "email")[],
+      recipients: [] as number[],
       isActive: true,
     },
   });
@@ -157,9 +157,9 @@ export default function AgendamentoEnvio() {
 
   const onSubmit = (values: ScheduleFormValues) => {
     if (editingId) {
-      updateMutation.mutate({ ...values, id: editingId });
+      updateMutation.mutate({ ...values, id: editingId } as any);
     } else {
-      createMutation.mutate(values);
+      createMutation.mutate(values as any);
     }
   };
 

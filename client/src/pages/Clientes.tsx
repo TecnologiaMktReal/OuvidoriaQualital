@@ -97,8 +97,6 @@ export default function Clientes() {
     search: searchTerm || undefined,
     contractId: contractFilter === 'todos' || contractFilter === 'sem_contrato' ? undefined : Number(contractFilter),
     isCliente: coopTypeFilter === 'todos' ? undefined : coopTypeFilter === 'Cliente'
-  }, {
-    keepPreviousData: true
   });
 
   const Clientes = listQuery.data as unknown as Cliente[] | undefined;
@@ -271,7 +269,7 @@ export default function Clientes() {
   const createMutation = trpc.clientes.create.useMutation({
     onSuccess: async (data) => {
       toast.success("Cliente criado com sucesso!");
-      utils.Clientes.list.invalidate();
+      utils.clientes.list.invalidate();
       setOpenCreate(false);
       
       // Verificar se existem tickets para vincular
@@ -286,7 +284,7 @@ export default function Clientes() {
       if (identifiers.length > 0) {
         try {
           console.log("[DEBUG] Checking unlinked tickets for (create):", identifiers);
-          const count = await utils.Clientes.checkUnlinkedTickets.fetch({ identifiers });
+          const count = await utils.clientes.checkUnlinkedTickets.fetch({ identifiers });
           console.log("[DEBUG] Unlinked tickets count (create):", count);
           if (count > 0) {
             setLinkableTicketsCount(count);
@@ -308,7 +306,7 @@ export default function Clientes() {
   const updateMutation = trpc.clientes.update.useMutation({
     onSuccess: async () => {
       toast.success("Cliente atualizado com sucesso!");
-      utils.Clientes.list.invalidate();
+      utils.clientes.list.invalidate();
       setOpenCreate(false);
 
       if (editingId) {
@@ -323,7 +321,7 @@ export default function Clientes() {
         if (identifiers.length > 0) {
           try {
             console.log("[DEBUG] Checking unlinked tickets for (update):", identifiers);
-            const count = await utils.Clientes.checkUnlinkedTickets.fetch({ identifiers });
+            const count = await utils.clientes.checkUnlinkedTickets.fetch({ identifiers });
             console.log("[DEBUG] Unlinked tickets count (update):", count);
             if (count > 0) {
               setLinkableTicketsCount(count);
@@ -391,7 +389,7 @@ export default function Clientes() {
   const deleteMutation = trpc.clientes.delete.useMutation({
     onSuccess: () => {
       toast.success("Cliente excluído com sucesso!");
-      utils.Clientes.list.invalidate();
+      utils.clientes.list.invalidate();
       setOpenDelete(false);
     },
     onError: (error) => {
@@ -402,7 +400,7 @@ export default function Clientes() {
   const deleteWithHistoryMutation = trpc.clientes.deleteWithHistory.useMutation({
     onSuccess: () => {
       toast.success("Cliente e todo o histórico excluídos com sucesso!");
-      utils.Clientes.list.invalidate();
+      utils.clientes.list.invalidate();
       setOpenDelete(false);
     },
     onError: (error) => {
@@ -580,10 +578,10 @@ export default function Clientes() {
     
     // Buscar telefones e e-mails adicionais
     try {
-      const phones = await utils.Clientes.phones.list.fetch({ clienteId: Cliente.id });
+      const phones = await utils.clientes.phones.list.fetch({ clienteId: Cliente.id });
       setAdditionalPhones(phones.filter(p => p.isActive && p.phoneType === "secundario").map(p => p.phone));
       
-      const emails = await utils.Clientes.emails.list.fetch({ clienteId: Cliente.id });
+      const emails = await utils.clientes.emails.list.fetch({ clienteId: Cliente.id });
       setAdditionalEmails(emails.filter(e => e.isActive).map(e => e.email));
     } catch (error) {
       console.error("Erro ao buscar contatos adicionais:", error);
@@ -591,7 +589,7 @@ export default function Clientes() {
     
     // Buscar dados bancários
     try {
-      const bankData = await utils.Clientes.bankData.get.fetch({ clienteId: Cliente.id });
+      const bankData = await utils.clientes.bankData.get.fetch({ clienteId: Cliente.id });
       if (bankData) {
         setBankCode(bankData.bankCode || "");
         setBankName(bankData.bankName || "");
@@ -1967,7 +1965,7 @@ export default function Clientes() {
         open={openImport} 
         onOpenChange={setOpenImport} 
         onSuccess={() => {
-           utils.Clientes.list.invalidate();
+           utils.clientes.list.invalidate();
         }} 
       />
     </Layout>

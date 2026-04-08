@@ -790,7 +790,7 @@ export default function Cooperativa() {
           <TabsContent value="indicadores" className="space-y-8 outline-none animate-in fade-in-50 duration-300">
              <div className="grid gap-6 md:grid-cols-3">
               {[
-                { label: "Total de Clientes", value: stats?.totals.Clientes ?? 0, icon: <UserRound className="h-5 w-5 text-blue-600" />, sub: "Base completa" },
+                { label: "Total de Clientes", value: stats?.totals.clientes ?? 0, icon: <UserRound className="h-5 w-5 text-blue-600" />, sub: "Base completa" },
                 { label: "Clientes Ativos", value: stats?.totals.ClientesAtivos ?? 0, icon: <Check className="h-5 w-5 text-emerald-600" />, sub: "Vínculos presentes" },
                 { label: "Total de Contratos", value: stats?.totals.contracts ?? 0, icon: <FileText className="h-5 w-5 text-indigo-600" />, sub: "Empresas/Projetos" },
               ].map((item) => (

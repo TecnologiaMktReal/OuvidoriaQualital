@@ -97,13 +97,13 @@ export default function SetupWhatsApp() {
   });
 
   const setModeMutation = trpc.whatsapp.setMode.useMutation({
-    onSuccess: (data) => {
+    onSuccess: (data, variables) => {
       toast.success("Modo atualizado");
       refetchMode();
       refetchStatus();
       // Scroll automático para a configuração do modo selecionado
       setTimeout(() => {
-        const targetId = data?.mode === "cloud_api" ? "cloud-api-config" : "qr-config";
+        const targetId = variables.mode === "cloud_api" ? "cloud-api-config" : "qr-config";
         document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
       }, 300);
     },

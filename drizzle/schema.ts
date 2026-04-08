@@ -180,7 +180,7 @@ export const ticketCriticities = mysqlTable("ticket_criticities", {
 // Clientes
 // ============================================================================
 
-export const clientes: any = mysqlTable("clientes", {
+export const clientes = mysqlTable("clientes", {
   id: int("id").autoincrement().primaryKey(),
   registrationNumber: bigint("registrationNumber", { mode: "number" }).unique(), // Removido notNull para suportar Não-Clientes
   name: varchar("name", { length: 255 }).notNull(),
@@ -257,8 +257,8 @@ export const clienteBankData = mysqlTable("cliente_bank_data", {
 
 export const contracts: any = mysqlTable("contracts", {
   id: int("id").autoincrement().primaryKey(),
-  clienteId: int("clienteId").references(() => Clientes.id),
-  coordinatorclienteId: int("coordinatorclienteId").references(() => Clientes.id, { onDelete: "set null" }),
+  clienteId: int("clienteId").references(() => clientes.id),
+  coordinatorclienteId: int("coordinatorclienteId").references(() => clientes.id, { onDelete: "set null" }),
   name: varchar("name", { length: 255 }).notNull(),
   city: varchar("city", { length: 100 }).notNull(),
   state: varchar("state", { length: 2 }).notNull(),
@@ -268,7 +268,7 @@ export const contracts: any = mysqlTable("contracts", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 }, (table) => ({
-  coordinatorclienteIdIdx: index("contracts_coordinator_Cliente_id_idx").on(table.coordinatorclienteId),
+  coordinatorclienteIdIdx: index("contracts_coordinator_cliente_id_idx").on(table.coordinatorclienteId),
 }));
 
 // ============================================================================
@@ -296,7 +296,7 @@ export const attendanceReasons = mysqlTable("attendance_reasons", {
 export const tickets = mysqlTable("tickets", {
   id: int("id").autoincrement().primaryKey(),
   protocol: varchar("protocol", { length: 20 }).notNull().unique(),
-  clienteId: int("clienteId").references(() => Clientes.id),
+  clienteId: int("clienteId").references(() => clientes.id),
   contractId: int("contractId").notNull().references(() => contracts.id),
   reasonId: int("reasonId").notNull().references(() => attendanceReasons.id),
   status: varchar("status", { length: 64 }).default("aguardando_atendimento").notNull(),
@@ -323,7 +323,7 @@ export const tickets = mysqlTable("tickets", {
 }, (table) => ({
   externalIdx: index("tickets_external_identifier_idx").on(table.externalIdentifier),
   externalNumberIdx: index("tickets_external_number_idx").on(table.externalNumber),
-  clienteIdIdx: index("tickets_Cliente_id_idx").on(table.clienteId),
+  clienteIdIdx: index("tickets_cliente_id_idx").on(table.clienteId),
   contractIdIdx: index("tickets_contract_id_idx").on(table.contractId),
   statusIdx: index("tickets_status_idx").on(table.status),
   openedAtIdx: index("tickets_opened_at_idx").on(table.openedAt),
@@ -335,7 +335,7 @@ export const ticketMessages = mysqlTable("ticket_messages", {
   ticketId: int("ticketId").notNull().references(() => tickets.id, { onDelete: "cascade" }),
   senderType: mysqlEnum("senderType", ["Cliente", "atendente", "sistema"]).notNull(),
   senderId: int("senderId"),
-  recipientclienteId: int("recipientclienteId").references(() => Clientes.id),
+  recipientclienteId: int("recipientclienteId").references(() => clientes.id),
   message: text("message").notNull(),
   mediaUrl: text("mediaUrl"),
   whatsappMessageId: varchar("whatsappMessageId", { length: 255 }),
@@ -374,7 +374,7 @@ export const ticketTimeTracking = mysqlTable("ticket_time_tracking", {
 export const csatSurveys = mysqlTable("csat_surveys", {
   id: int("id").autoincrement().primaryKey(),
   ticketId: int("ticketId").notNull().references(() => tickets.id, { onDelete: "cascade" }),
-  clienteId: int("clienteId").notNull().references(() => Clientes.id),
+  clienteId: int("clienteId").notNull().references(() => clientes.id),
   rating: int("rating"),
   comment: text("comment"),
   sentAt: timestamp("sentAt").defaultNow().notNull(),
@@ -639,8 +639,8 @@ export type InsertTicketType = typeof ticketTypes.$inferInsert;
 export type TicketCriticity = typeof ticketCriticities.$inferSelect;
 export type InsertTicketCriticity = typeof ticketCriticities.$inferInsert;
 
-export type Cliente = typeof Clientes.$inferSelect;
-export type InsertCliente = typeof Clientes.$inferInsert;
+export type Cliente = typeof clientes.$inferSelect;
+export type InsertCliente = typeof clientes.$inferInsert;
 
 export type clientePhone = typeof clientePhones.$inferSelect;
 export type InsertclientePhone = typeof clientePhones.$inferInsert;
@@ -648,8 +648,8 @@ export type InsertclientePhone = typeof clientePhones.$inferInsert;
 export type clienteEmail = typeof clienteEmails.$inferSelect;
 export type InsertclienteEmail = typeof clienteEmails.$inferInsert;
 
-export type ClienteBankData = typeof ClienteBankData.$inferSelect;
-export type InsertClienteBankData = typeof ClienteBankData.$inferInsert;
+export type ClienteBankData = typeof clienteBankData.$inferSelect;
+export type InsertClienteBankData = typeof clienteBankData.$inferInsert;
 
 export type Contract = typeof contracts.$inferSelect;
 export type InsertContract = typeof contracts.$inferInsert;

@@ -12,7 +12,7 @@ import {
   cooperativaBusinessHours, cooperativaHolidays, emailAccounts, emailCredentials, emailTestLogs, emailEvents, emailAttachments,
   internalConversations, conversationParticipants, internalMessages, stickers, managerAlertConfigs,
   type InsertProfile, type InsertDepartment, type InsertCliente,
-  type InsertclientePhone, type InsertclienteEmail, type InsertclienteBankData, type InsertContract,
+  type InsertclientePhone, type InsertclienteEmail, type InsertClienteBankData, type InsertContract,
   type InsertAttendanceReason, type InsertTicket, type InsertTicketMessage,
   type InsertTicketHistory, type InsertTicketTimeTracking, type InsertCsatSurvey,
   type InsertWhatsappSession, type InsertQuickMessage, type UserProfileType,
@@ -1988,7 +1988,7 @@ export async function createCliente(Cliente: InsertCliente & { additionalPhones?
 
   // Validar unicidade
   await validateClienteUniqueness({
-    document: data.document,
+    document: data.document ?? undefined,
     registrationNumber: data.registrationNumber || undefined,
     whatsappNumber: data.whatsappNumber ?? undefined,
     secondaryPhone: data.secondaryPhone ?? undefined,
@@ -2029,7 +2029,7 @@ export async function updateCliente(id: number, data: Partial<InsertCliente> & {
   // Validar unicidade se campos relevantes forem fornecidos
   await validateClienteUniqueness({
     id,
-    document: updateData.document,
+    document: updateData.document ?? undefined,
     registrationNumber: updateData.registrationNumber || undefined,
     whatsappNumber: updateData.whatsappNumber ?? undefined,
     secondaryPhone: updateData.secondaryPhone ?? undefined,
@@ -2281,8 +2281,8 @@ export async function getClienteBankData(clienteId: number) {
   const db = await getDb();
   if (!db) return null;
   
-  const result = await db.select().from(ClienteBankData)
-    .where(eq(ClienteBankData.clienteId, clienteId))
+  const result = await db.select().from(clienteBankData)
+    .where(eq(clienteBankData.clienteId, clienteId))
     .limit(1);
   
   return result.length > 0 ? result[0] : null;
@@ -2301,10 +2301,10 @@ export async function upsertClienteBankData(data: InsertClienteBankData) {
   const existing = await getClienteBankData(bankData.clienteId);
   
   if (existing) {
-    await db.update(ClienteBankData).set(bankData).where(eq(ClienteBankData.id, existing.id));
+    await db.update(clienteBankData).set(bankData).where(eq(clienteBankData.id, existing.id));
     return existing.id;
   } else {
-    const result = await db.insert(ClienteBankData).values(bankData);
+    const result = await db.insert(clienteBankData).values(bankData);
     return result[0].insertId;
   }
 }
@@ -3172,18 +3172,18 @@ export async function getAllTickets(filters: {
 
   const bankSubquery = db
     .select({
-      clienteId: ClienteBankData.clienteId,
-      subBankCode: sql<string | null>`MAX(${ClienteBankData.bankCode})`.as("subBankCode"),
-      subBankName: sql<string | null>`MAX(${ClienteBankData.bankName})`.as("subBankName"),
-      subAccountType: sql<string | null>`MAX(${ClienteBankData.accountType})`.as("subAccountType"),
-      subAgency: sql<string | null>`MAX(${ClienteBankData.agency})`.as("subAgency"),
-      subAccountNumber: sql<string | null>`MAX(${ClienteBankData.accountNumber})`.as("subAccountNumber"),
-      subAccountDigit: sql<string | null>`MAX(${ClienteBankData.accountDigit})`.as("subAccountDigit"),
-      subPixKey: sql<string | null>`MAX(${ClienteBankData.pixKey})`.as("subPixKey"),
+      clienteId: clienteBankData.clienteId,
+      subBankCode: sql<string | null>`MAX(${clienteBankData.bankCode})`.as("subBankCode"),
+      subBankName: sql<string | null>`MAX(${clienteBankData.bankName})`.as("subBankName"),
+      subAccountType: sql<string | null>`MAX(${clienteBankData.accountType})`.as("subAccountType"),
+      subAgency: sql<string | null>`MAX(${clienteBankData.agency})`.as("subAgency"),
+      subAccountNumber: sql<string | null>`MAX(${clienteBankData.accountNumber})`.as("subAccountNumber"),
+      subAccountDigit: sql<string | null>`MAX(${clienteBankData.accountDigit})`.as("subAccountDigit"),
+      subPixKey: sql<string | null>`MAX(${clienteBankData.pixKey})`.as("subPixKey"),
     })
-    .from(ClienteBankData)
-    .where(eq(ClienteBankData.isActive, true))
-    .groupBy(ClienteBankData.clienteId)
+    .from(clienteBankData)
+    .where(eq(clienteBankData.isActive, true))
+    .groupBy(clienteBankData.clienteId)
     .as("bankSub");
 
   const csatSubquery = db
@@ -4192,7 +4192,7 @@ export async function bulkImportClientes(
           position: row.position || null,
           status: row.status || "ativo",
           contractId: row.contractId || null,
-        });
+        } as any);
 
         // Se tem telefone, inserir também
         if (row.phone && result?.insertId) {
@@ -4208,7 +4208,7 @@ export async function bulkImportClientes(
         // Se tem dígito da conta, inserir em cliente_bank_data (versão mínima)
         if (row.accountDigit && result?.insertId) {
           const clienteId = Number(result.insertId);
-          await tx.insert(ClienteBankData).values({
+          await tx.insert(clienteBankData).values({
             clienteId,
             bankCode: "000", // Placeholder se não fornecido
             bankName: "Não especificado",

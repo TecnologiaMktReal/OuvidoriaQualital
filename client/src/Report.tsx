@@ -22,7 +22,7 @@ const CoverPage: React.FC<{ date: string; title: string }> = ({ date, title }) =
     <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #fff 1px, transparent 0)', backgroundSize: '40px 40px' }} />
     
     {/* Logo */}
-    <img src={logos.blue} alt="Logo Qualital" className="h-24 mb-12" crossOrigin="anonymous" />
+    <img src={logos.LOGO_URL} alt="Logo Qualital" className="h-24 mb-12" crossOrigin="anonymous" />
     
     {/* Titulo Principal */}
     <div className="text-center">
@@ -66,7 +66,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ title, date, pageNum, child
   <div className="pdf-page w-[297mm] h-[209mm] bg-white p-8 flex flex-col relative page-break-after">
     {/* Cabecalho */}
     <div className="flex justify-between items-center pb-4 mb-6 border-b-2 border-slate-100">
-      <img src={logos.blue} alt="Logo" className="h-10 brightness-0" crossOrigin="anonymous" />
+      <img src={logos.LOGO_URL} alt="Logo" className="h-10 brightness-0" crossOrigin="anonymous" />
       <div className="text-right">
         <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">{title}</h2>
         <p className="text-xs text-slate-500">Data Base: {date}</p>

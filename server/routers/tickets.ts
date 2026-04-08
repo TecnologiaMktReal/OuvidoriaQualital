@@ -15,7 +15,7 @@ import { storagePut } from "../storage";
 
 export interface ReportData {
   ticket: any;
-  Cliente: any;
+  cliente: any;
   history: {
     main: any[];
     internal: any[];
@@ -151,7 +151,7 @@ export const ticketsRouter = router({
         if (csatRequest?.shouldSend) {
            // Resolve Placeholders
             const { message, ticket } = csatRequest;
-            const Cliente = ticket.clienteId ? await db.getClienteById(ticket.clienteId) : null;
+            const cliente = ticket.clienteId ? await db.getClienteById(ticket.clienteId) : null;
             
             const finalMessage = replaceMessagePlaceholders(message, {
                 ticket: {
@@ -159,7 +159,7 @@ export const ticketsRouter = router({
                     protocol: ticket.protocol,
                     externalName: ticket.externalName
                 },
-                Cliente
+                cliente
             });
 
             // Criar mensagem no banco
@@ -173,8 +173,8 @@ export const ticketsRouter = router({
 
             // Enviar WhatsApp
             let targetPhone = ticket.externalIdentifier;
-            if (!targetPhone && Cliente?.whatsappNumber) {
-                targetPhone = Cliente.whatsappNumber;
+            if (!targetPhone && cliente?.whatsappNumber) {
+                targetPhone = cliente.whatsappNumber;
             }
 
             if (targetPhone && ticket.channel === "whatsapp") {
@@ -187,10 +187,10 @@ export const ticketsRouter = router({
                 const { renderCsatEmailTemplate, sendOutboundEmail } = await import("../email/service");
                 const { getClienteById, getContractById } = await import("../db");
                 
-                const Cliente = await getClienteById(ticket.clienteId || 0);
+                const cliente = await getClienteById(ticket.clienteId || 0);
                 const contract = await getContractById(ticket.contractId || 0);
                 
-                const clienteName = Cliente?.name || "Cliente";
+                const clienteName = cliente?.name || "Cliente";
                 const contractName = contract?.name || "Geral";
                 
                 const html = renderCsatEmailTemplate(ticket.protocol, ticket.id, clienteName, contractName);
@@ -418,14 +418,14 @@ export const ticketsRouter = router({
         const ticket = await db.getTicketById(ticketId);
         if (!ticket) throw new Error("Ticket não encontrado");
 
-        const Cliente = await db.getClienteById(clienteId);
-        if (!Cliente) throw new Error("Cliente não encontrado");
+        const cliente = await db.getClienteById(clienteId);
+        if (!cliente) throw new Error("Cliente não encontrado");
 
         // Atualizar ticket com Cliente e também o contrato se o Cliente tiver um
         const updates: any = { clienteId };
         
-        if (Cliente.contractId) {
-            updates.contractId = Cliente.contractId;
+        if (cliente.contractId) {
+            updates.contractId = cliente.contractId;
         }
 
         await db.updateTicket(ticketId, updates);
@@ -435,7 +435,7 @@ export const ticketsRouter = router({
             try {
                 if (ticket.channel === 'email') {
                     // Verificar se já é o e-mail principal
-                    if (Cliente.email?.trim().toLowerCase() !== ticket.externalIdentifier.trim().toLowerCase()) {
+                    if (cliente.email?.trim().toLowerCase() !== ticket.externalIdentifier.trim().toLowerCase()) {
                         await db.addclienteEmail({
                             clienteId,
                             email: ticket.externalIdentifier,
@@ -444,8 +444,8 @@ export const ticketsRouter = router({
                     }
                 } else if (ticket.channel === 'whatsapp') {
                     const normalizedTicketNumber = ticket.externalIdentifier.replace(/\D/g, "");
-                    const normalizedPrimary = Cliente.whatsappNumber?.replace(/\D/g, "");
-                    const normalizedSecondary = Cliente.secondaryPhone?.replace(/\D/g, "");
+                    const normalizedPrimary = cliente.whatsappNumber?.replace(/\D/g, "");
+                    const normalizedSecondary = cliente.secondaryPhone?.replace(/\D/g, "");
 
                     // Verificar se já é um dos números principais
                     if (normalizedTicketNumber !== normalizedPrimary && normalizedTicketNumber !== normalizedSecondary) {
@@ -469,7 +469,7 @@ export const ticketsRouter = router({
             action: "Cliente_linked",
             oldValue: ticket.clienteId?.toString() || "null",
             newValue: clienteId.toString(),
-            comment: `Ticket vinculado ao Cliente: ${Cliente.name}. Contato persistido.`,
+            comment: `Ticket vinculado ao cliente: ${cliente.name}. Contato persistido.`,
         });
 
         return { success: true };
@@ -692,7 +692,7 @@ export const ticketsRouter = router({
         // Process placeholders
         const department = await db.getDepartmentById(ticket.currentDepartmentId);
         const contract = await db.getContractById(ticket.contractId);
-        const Cliente = ticket.clienteId ? await db.getClienteById(ticket.clienteId) : null;
+        const cliente = ticket.clienteId ? await db.getClienteById(ticket.clienteId) : null;
         
         const finalMessage = replaceMessagePlaceholders(input.message, {
           ticket: {
@@ -700,7 +700,7 @@ export const ticketsRouter = router({
              protocol: ticket.protocol,
              externalName: ticket.externalName
           },
-          Cliente: Cliente,
+          cliente: cliente,
           attendantName: ctx.user.name || "Atendente",
           departmentName: department?.name,
           contractName: contract?.name
@@ -722,9 +722,9 @@ export const ticketsRouter = router({
         // Se tiver um destinatário específico (Coordenador), buscar o telefone dele
         if (input.recipientclienteId) {
           try {
-            const Cliente = await db.getClienteById(input.recipientclienteId);
-            if (Cliente?.whatsappNumber) {
-              targetPhone = Cliente.whatsappNumber;
+            const cliente = await db.getClienteById(input.recipientclienteId);
+            if (cliente?.whatsappNumber) {
+              targetPhone = cliente.whatsappNumber;
             } else {
               const phones = await db.getclientePhones(input.recipientclienteId);
               const activePhones = phones.filter((p) => p.isActive !== false);
@@ -744,14 +744,14 @@ export const ticketsRouter = router({
           if (!targetPhone && ticket.clienteId) {
             try {
               const phones = await db.getclientePhones(ticket.clienteId);
-              const Cliente = await db.getClienteById(ticket.clienteId);
+              const cliente = await db.getClienteById(ticket.clienteId);
               const activePhones = phones.filter((p) => p.isActive !== false);
               const primaryPhone =
                 activePhones.find((p) => p.phoneType === "whatsapp") ||
                 activePhones.find((p) => p.phoneType === "principal") ||
                 activePhones[0] ||
-                (Cliente?.whatsappNumber
-                  ? { phone: Cliente.whatsappNumber, phoneType: "whatsapp", isActive: true }
+                (cliente?.whatsappNumber
+                  ? { phone: cliente.whatsappNumber, phoneType: "whatsapp", isActive: true }
                   : null);
 
               targetPhone = primaryPhone?.phone || null;
@@ -918,7 +918,7 @@ export const ticketsRouter = router({
       const ticket = await db.getTicketById(input.ticketId);
       if (!ticket) throw new Error("Ticket não encontrado");
 
-      const Cliente = ticket.clienteId ? await db.getClienteById(ticket.clienteId) : null;
+      const cliente = ticket.clienteId ? await db.getClienteById(ticket.clienteId) : null;
       
       const contract = await db.getContractById(ticket.contractId);
       const coordinatorId = contract?.coordinatorclienteId;
@@ -969,7 +969,7 @@ export const ticketsRouter = router({
          if (m.senderType === 'Cliente') {
             senderName = isCoordinatorChat 
                ? (contract?.coordinatorName || "Coordenador") 
-               : (Cliente?.name || ticket.externalName || "Cliente");
+               : (cliente?.name || ticket.externalName || "Cliente");
          } else if (m.senderType === 'atendente' || m.senderType === 'user') {
             senderName = usersMap.get(m.senderId) || "Atendente";
          }
@@ -1004,8 +1004,8 @@ export const ticketsRouter = router({
           reasonName: ticket.reasonId ? (await db.getAttendanceReasonById(ticket.reasonId))?.name : null,
           participatingAttendants: participatingAttendants || "Nenhum"
         },
-        Cliente: Cliente ? {
-           ...Cliente,
+        cliente: cliente ? {
+           ...cliente,
            contractName: contract?.name,
            coordinatorName: contract?.coordinatorName
         } : null,
@@ -1159,8 +1159,8 @@ export const ticketsRouter = router({
         });
       }
 
-      const Cliente = await db.getClienteById(ticket.clienteId);
-      if (!Cliente) throw new TRPCError({ code: "NOT_FOUND", message: "Cliente não encontrado" });
+      const cliente = await db.getClienteById(ticket.clienteId);
+      if (!cliente) throw new TRPCError({ code: "NOT_FOUND", message: "Cliente não encontrado" });
 
       // Buscar o contrato associado ao ticket para obter o município
       let municipio = "Monte Alegre";
@@ -1172,9 +1172,9 @@ export const ticketsRouter = router({
           municipio = contract.city;
           uf = contract.state || "RN";
         }
-      } else if (Cliente.contractId) {
+      } else if (cliente.contractId) {
         // Fallback para o contrato do Cliente se o ticket não tiver um contrato específico
-        const contract = await db.getContractById(Cliente.contractId);
+        const contract = await db.getContractById(cliente.contractId);
         if (contract && contract.city) {
           municipio = contract.city;
           uf = contract.state || "RN";
@@ -1182,13 +1182,13 @@ export const ticketsRouter = router({
       }
 
       const declData: DeclarationData = {
-        nome: Cliente.name,
-        cpf: Cliente.document, // O CPF é document no banco
-        cargo: Cliente.position || "Cliente",
-        dataAdmissao: Cliente.admissionDate,
-        dataAssociacao: Cliente.associationDate,
-        dataDesligamento: Cliente.terminationDate || null,
-        status: Cliente.status,
+        nome: cliente.name,
+        cpf: cliente.document || "", // O CPF é document no banco
+        cargo: cliente.position || "Cliente",
+        dataAdmissao: cliente.admissionDate,
+        dataAssociacao: cliente.associationDate,
+        dataDesligamento: cliente.terminationDate || null,
+        status: cliente.status,
         municipio,
         uf
       };

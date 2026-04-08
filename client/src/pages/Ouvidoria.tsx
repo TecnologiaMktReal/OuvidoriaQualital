@@ -22,7 +22,7 @@ const ouvidoriaSchema = z.object({
   email: z.string().email("E-mail inválido").optional().or(z.literal("")),
   phone: z.string().optional(),
   cpf: z.string().optional(),
-  reasonId: z.coerce.number({ invalid_type_error: "Selecione um assunto" }).min(1, "Selecione um assunto"),
+  reasonId: z.coerce.number().min(1, "Selecione um assunto"),
   description: z.string().min(10, "A descrição deve ter pelo menos 10 caracteres"),
   files: z.any().optional(), 
 }).superRefine((data, ctx) => {
@@ -62,7 +62,7 @@ export default function Ouvidoria() {
   const createTicket = trpc.public.createTicket.useMutation();
 
   const form = useForm<OuvidoriaForm>({
-    resolver: zodResolver(ouvidoriaSchema),
+    resolver: zodResolver(ouvidoriaSchema) as any,
     defaultValues: {
       mode: "identificado",
       name: "",
@@ -236,7 +236,7 @@ export default function Ouvidoria() {
                 </CardHeader>
 
                 <CardContent>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <form onSubmit={form.handleSubmit(onSubmit as any)} className="space-y-6">
                         
                         {/* Identificação Switch */}
                         <div className="p-1 bg-slate-100 rounded-lg flex gap-1">

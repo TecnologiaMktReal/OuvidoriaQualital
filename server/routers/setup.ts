@@ -56,6 +56,7 @@ export const setupRouter = router({
   // Criar layout padrão do sistema
   createDefaultEmailLayout: publicProcedure.mutation(async () => {
     const db = await getDb();
+    if (!db) throw new Error("Database not available");
     
     // Verificar se já existe algum layout
     const existing = await db.select().from(emailLayouts).limit(1);

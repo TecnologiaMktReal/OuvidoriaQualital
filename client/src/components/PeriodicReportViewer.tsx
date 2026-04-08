@@ -285,7 +285,7 @@ export default function PeriodicReportViewer({ initialPeriod = "diario", fixedPe
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <KpiBar title="Total de Tickets" value={data?.totals?.tickets ?? data?.totalTickets ?? 0} icon={FileText} accent="bg-blue-600" />
-        <KpiBar title="Clientes Ativos" value={data?.totals?.Clientes ?? 0} icon={Users} accent="bg-emerald-600" />
+        <KpiBar title="Clientes Ativos" value={data?.totals?.clientes ?? 0} icon={Users} accent="bg-emerald-600" />
         <KpiBar title="Polos/Contratos" value={data?.totals?.contracts ?? 0} icon={Building2} accent="bg-indigo-600" />
       </div>
 

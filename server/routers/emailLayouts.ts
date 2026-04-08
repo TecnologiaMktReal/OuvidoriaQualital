@@ -8,6 +8,7 @@ export const emailLayoutsRouter = router({
   // Listar todos os layouts
   list: publicProcedure.query(async () => {
     const db = await getDb();
+    if (!db) throw new Error("Database not available");
     const layouts = await db
       .select()
       .from(emailLayouts)
@@ -20,6 +21,7 @@ export const emailLayoutsRouter = router({
     .input(z.object({ id: z.number() }))
     .query(async ({ input }) => {
       const db = await getDb();
+    if (!db) throw new Error("Database not available");
       const layout = await db
         .select()
         .from(emailLayouts)
@@ -31,6 +33,7 @@ export const emailLayoutsRouter = router({
   // Buscar layout padrão
   getDefault: publicProcedure.query(async () => {
     const db = await getDb();
+    if (!db) throw new Error("Database not available");
     const layout = await db
       .select()
       .from(emailLayouts)
@@ -53,6 +56,7 @@ export const emailLayoutsRouter = router({
     )
     .mutation(async ({ input }) => {
       const db = await getDb();
+    if (!db) throw new Error("Database not available");
 
       // Se este layout for marcado como padrão, remover o padrão dos outros
       if (input.isDefault) {
@@ -63,7 +67,7 @@ export const emailLayoutsRouter = router({
       }
 
       const result = await db.insert(emailLayouts).values(input);
-      return { id: Number(result.insertId), success: true };
+      return { id: Number(result[0].insertId), success: true };
     }),
 
   // Atualizar layout
@@ -80,6 +84,7 @@ export const emailLayoutsRouter = router({
     )
     .mutation(async ({ input }) => {
       const db = await getDb();
+    if (!db) throw new Error("Database not available");
       const { id, ...data } = input;
 
       // Se este layout for marcado como padrão, remover o padrão dos outros
@@ -99,6 +104,7 @@ export const emailLayoutsRouter = router({
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input }) => {
       const db = await getDb();
+    if (!db) throw new Error("Database not available");
 
       // Remover padrão de todos
       await db
@@ -120,6 +126,7 @@ export const emailLayoutsRouter = router({
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input }) => {
       const db = await getDb();
+    if (!db) throw new Error("Database not available");
 
       // Verificar se não é o layout padrão
       const layout = await db

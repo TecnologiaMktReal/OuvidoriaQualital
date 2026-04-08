@@ -2,7 +2,7 @@ import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
 import { logger } from "../_core/logger";
 
-let _db: ReturnType<typeof drizzle> | null = null;
+let _db: any = null;
 let migrationsApplied = false;
 
 export async function getDb() {

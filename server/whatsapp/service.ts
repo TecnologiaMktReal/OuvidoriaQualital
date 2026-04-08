@@ -801,7 +801,7 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
                 if (csatQuestion) {
                     const finalMsg = replaceMessagePlaceholders(csatQuestion, {
                         ticket: { id: pendingSurvey.ticketId, protocol: pendingSurvey.ticketId.toString() },
-                        Cliente
+                        cliente: Cliente
                     });
                     await sendWhatsAppMessage(payload.from, finalMsg);
                 }
@@ -823,7 +823,7 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
     }
 
     const config = await db.ensureDefaultTicketConfig({
-      contractId: Cliente?.contractId
+      contractId: Cliente?.contractId ?? undefined
     });
 
     const result = await db.createTicket({
@@ -871,7 +871,7 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
         protocol: result.protocol,
         externalName: payload.profileName || payload.verifiedName || null
       },
-      Cliente: Cliente || null,
+      cliente: Cliente || null,
       attendantName: "Atendente Virtual",
       departmentName: departmentName,
       contractName: contractName

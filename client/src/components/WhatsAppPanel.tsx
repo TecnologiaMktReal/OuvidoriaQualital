@@ -22,6 +22,7 @@ interface WhatsAppPanelProps {
 type Ticket = {
   id: number;
   protocol: string;
+  clienteId?: number | null;
   clienteName?: string | null;
   contractName?: string | null;
   status: string;

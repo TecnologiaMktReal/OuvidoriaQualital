@@ -13,6 +13,8 @@ export const clientesRouter = router({
       search: z.string().optional(),
       page: z.number().int().min(1).optional(),
       pageSize: z.number().int().min(-1).max(10000).optional(),
+      contractId: z.number().optional(),
+      isCliente: z.boolean().optional(),
     }).optional())
     .query(async ({ input }) => {
       return await db.getAllClientes(input);
@@ -79,12 +81,13 @@ export const clientesRouter = router({
       // Separar dados bancários do input
       const { 
         bankCode, bankName, accountType, agency, accountNumber, accountDigit, pixKey, 
-        additionalPhones, additionalEmails,
+        additionalPhones, additionalEmails, status,
         ...ClienteData 
       } = input;
       
       const id = await db.createCliente({
         ...ClienteData,
+        status: input.status ? (input.status as "ativo" | "inativo" | "desligado") : undefined,
         additionalPhones,
         additionalEmails,
         name: normalizeText(input.name),
@@ -93,9 +96,9 @@ export const clientesRouter = router({
         street: input.street ? normalizeText(input.street) : undefined,
         neighborhood: input.neighborhood ? normalizeText(input.neighborhood) : undefined,
         city: input.city ? normalizeText(input.city) : undefined,
-        birthDate: input.birthDate || null,
-        admissionDate: input.admissionDate || null,
-        associationDate: input.associationDate || null,
+        birthDate: input.birthDate ? new Date(input.birthDate) : null,
+        admissionDate: input.admissionDate ? new Date(input.admissionDate) : null,
+        associationDate: input.associationDate ? new Date(input.associationDate) : null,
         terminationDate: null,
       });
       
@@ -163,7 +166,7 @@ export const clientesRouter = router({
       requireAdminOrManager(ctx);
       const { 
         id, bankCode, bankName, accountType, agency, accountNumber, accountDigit, pixKey, 
-        additionalPhones, additionalEmails,
+        additionalPhones, additionalEmails, status,
         ...data 
       } = input;
 
@@ -172,8 +175,13 @@ export const clientesRouter = router({
         ? (additionalEmails as any).flat().filter((e: any) => typeof e === 'string' && e.includes('@'))
         : undefined;
 
-      const normalizedData = {
+      const normalizedData: any = {
         ...data,
+        status: status ? (status as "ativo" | "inativo" | "desligado") : undefined,
+        birthDate: data.birthDate ? new Date(data.birthDate) : undefined,
+        admissionDate: data.admissionDate ? new Date(data.admissionDate) : undefined,
+        associationDate: data.associationDate ? new Date(data.associationDate) : undefined,
+        terminationDate: data.terminationDate ? new Date(data.terminationDate) : undefined,
         additionalPhones,
         additionalEmails: flatAdditionalEmails,
         ...(data.name && { name: normalizeText(data.name) }),
@@ -675,8 +683,10 @@ export const clientesRouter = router({
           const parseDate = (d: string) => {
             if (!d) return null;
             const parts = d.split('/');
-            if (parts.length === 3) return `${parts[2]}-${parts[1]}-${parts[0]}`;
-            return null; // ou tentar data direta se já vier formatada
+            if (parts.length === 3) return new Date(`${parts[2]}-${parts[1]}-${parts[0]}T12:00:00Z`);
+            
+            const dt = new Date(d);
+            return isNaN(dt.getTime()) ? null : dt;
           };
 
           const commonData = {
@@ -717,7 +727,7 @@ export const clientesRouter = router({
 
           if (item.status === 'new') {
             const newId = await db.createCliente({
-              ...commonData,
+              ...(commonData as any),
               isCliente: true,
             });
 
@@ -732,7 +742,7 @@ export const clientesRouter = router({
             results.details.push({ ...item, processingStatus: "created", id: newId });
 
           } else if (item.status === 'update' && item.data.id) {
-            await db.updateCliente(item.data.id, commonData);
+            await db.updateCliente(item.data.id, commonData as any);
             
             if (bankData) {
                await db.upsertClienteBankData({

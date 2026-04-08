@@ -560,7 +560,7 @@ export default function Home() {
   }, [contractData]);
 
   const { geoPoints, skipped } = useGeocodedPoints(mapPoints);
-  const totals = data?.totals || { tickets: 0, Clientes: 0, contracts: 0 };
+  const totals = data?.totals || { tickets: 0, clientes: 0, contracts: 0 };
   const tmaMinutes = data?.metrics?.tmaMinutes ?? null;
 
   const periodOptions: Array<{ id: DashboardPeriod; label: string }> = [
@@ -673,7 +673,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <TotalCard title="Total de Atendimentos" value={totals.tickets} icon={Ticket} accent="bg-blue-600" />
-            <TotalCard title="Total de Clientes" value={totals.Clientes} icon={Users} accent="bg-emerald-600" />
+            <TotalCard title="Total de Clientes" value={totals.clientes} icon={Users} accent="bg-emerald-600" />
             <TotalCard title="Total de Contratos" value={totals.contracts} icon={Building2} accent="bg-indigo-600" />
           </div>
 

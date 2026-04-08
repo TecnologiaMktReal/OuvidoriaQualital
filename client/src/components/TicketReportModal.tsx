@@ -39,7 +39,7 @@ export function TicketReportModal({ ticketId, open, onOpenChange }: TicketReport
       link.href = `data:application/pdf;base64,${responseData.pdfBase64}`;
       
       const protocol = data?.ticket.protocol || ticketId;
-      const fullName = data?.Cliente?.name || data?.ticket.externalName || "Cliente";
+      const fullName = data?.cliente?.name || data?.ticket.externalName || "Cliente";
       const nameParts = fullName.trim().split(/\s+/);
       const shortName = nameParts.length > 1 
         ? `${nameParts[0]}_${nameParts[nameParts.length - 1]}`
@@ -66,7 +66,7 @@ export function TicketReportModal({ ticketId, open, onOpenChange }: TicketReport
   });
 
   const getTargetPhone = () => {
-    if (whatsappTarget === "Cliente") return data?.Cliente?.whatsappNumber || data?.ticket.externalNumber || "";
+    if (whatsappTarget === "Cliente") return data?.cliente?.whatsappNumber || data?.ticket.externalNumber || "";
     if (whatsappTarget === "coordenador") return data?.coordinatorPhone || "";
     return customPhone;
   };
@@ -181,24 +181,24 @@ export function TicketReportModal({ ticketId, open, onOpenChange }: TicketReport
                <Card>
                  <CardHeader className="pb-2"><CardTitle className="text-sm uppercase text-slate-500">Cliente</CardTitle></CardHeader>
                  <CardContent className="text-sm space-y-2">
-                   <div className="flex justify-between"><span>Nome:</span> <span className="font-medium">{data.Cliente?.name || data.ticket.externalName}</span></div>
-                   <div className="flex justify-between"><span>Matrícula:</span> <span className="font-medium">{data.Cliente?.registrationNumber || "-"}</span></div>
-                   <div className="flex justify-between"><span>E-mail:</span> <span className="font-medium">{data.Cliente?.email || "-"}</span></div>
-                   <div className="flex justify-between"><span>Telefone:</span> <span className="font-medium">{data.Cliente?.whatsappNumber || data.ticket.externalNumber}</span></div>
+                   <div className="flex justify-between"><span>Nome:</span> <span className="font-medium">{data.cliente?.name || data.ticket.externalName}</span></div>
+                   <div className="flex justify-between"><span>Matrícula:</span> <span className="font-medium">{data.cliente?.registrationNumber || "-"}</span></div>
+                   <div className="flex justify-between"><span>E-mail:</span> <span className="font-medium">{data.cliente?.email || "-"}</span></div>
+                   <div className="flex justify-between"><span>Telefone:</span> <span className="font-medium">{data.cliente?.whatsappNumber || data.ticket.externalNumber}</span></div>
                    
                    {/* Novos Campos Solicitados */}
                    <div className="flex justify-between">
                      <span>Contrato:</span> 
-                     <span className="font-medium">{data.Cliente?.contractName || "Não informado"}</span>
+                     <span className="font-medium">{data.cliente?.contractName || "Não informado"}</span>
                    </div>
                    <div className="flex justify-between">
                      <span>Coordenador:</span> 
-                     <span className="font-medium">{data.Cliente?.coordinatorName || "-"}</span>
+                     <span className="font-medium">{data.cliente?.coordinatorName || "-"}</span>
                    </div>
                    <div className="flex justify-between">
                      <span>Status:</span> 
-                     <span className={`font-medium lowercase first-letter:uppercase ${data.Cliente?.status === 'ativo' ? 'text-green-600' : 'text-slate-600'}`}>
-                        {data.Cliente?.status || "-"}
+                     <span className={`font-medium lowercase first-letter:uppercase ${data.cliente?.status === 'ativo' ? 'text-green-600' : 'text-slate-600'}`}>
+                        {data.cliente?.status || "-"}
                      </span>
                    </div>
 

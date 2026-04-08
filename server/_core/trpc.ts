@@ -9,7 +9,8 @@ const t = initTRPC.context<TrpcContext>().create({
 });
 
 const auditMiddleware = t.middleware(async (opts) => {
-  const { ctx, path, type, rawInput } = opts;
+  const { ctx, path, type } = opts;
+  const rawInput = (opts as any).getRawInput ? await (opts as any).getRawInput() : (opts as any).rawInput;
   
   // Registrar ações de escrita (mutations) com detalhes
   if (type === "mutation") {

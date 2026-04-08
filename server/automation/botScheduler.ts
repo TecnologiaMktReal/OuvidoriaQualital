@@ -107,7 +107,7 @@ export async function processBotAutomations() {
                         protocol: ticket.protocol,
                         externalName: ticket.externalName
                     },
-                    Cliente: Cliente ? { name: Cliente.name } : null,
+                    cliente: Cliente ? { name: Cliente.name } : null,
                     contractName: contractName || undefined,
                     departmentName: departmentName || undefined,
                 }
@@ -238,7 +238,7 @@ async function processCsatTimeouts() {
                             protocol: ticket?.protocol || survey.ticketId.toString(),
                             externalName: ticket?.externalName 
                         },
-                        Cliente: Cliente,
+                        cliente: Cliente,
                         contractName: contract?.name,
                         departmentName: dept?.name
                     });

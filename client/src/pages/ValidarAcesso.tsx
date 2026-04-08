@@ -35,6 +35,7 @@ export default function ValidarAcesso() {
   const name = params.get("name") || "Usuário";
   const profile = params.get("profile") || "Perfil";
   const expectedEmail = params.get("email")?.toLowerCase();
+  const typeParam = params.get("type") || "invite";
 
   const verifyEmailMutation = trpc.auth.verifyEmail.useMutation();
 
@@ -220,11 +221,11 @@ export default function ValidarAcesso() {
               className="h-20 mx-auto mb-4 object-contain"
             />
             <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-              {configRef.current.label}
+              Ouvidoria Qualital
             </h2>
             <div className="relative z-10 border-t border-slate-100 pt-6 mt-4">
               <p className="text-slate-500 text-center text-sm mb-6">
-                Siga as instruções abaixo para {type === "recovery" ? "redefinir sua senha" : "ativar seu acesso oficial"}.
+                Siga as instruções abaixo para {typeParam === "recovery" ? "redefinir sua senha" : "ativar seu acesso oficial"}.
               </p>
             </div>
           </div>
