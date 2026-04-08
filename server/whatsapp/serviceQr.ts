@@ -235,7 +235,6 @@ export async function initializeQrSession() {
       (process.env.PUPPETEER_EXECUTABLE_PATH ?? "").trim() || puppeteer.executablePath();
 
     qrClient = new Client({
-      userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
       webVersionCache: {
         type: "local",
       },
@@ -272,6 +271,44 @@ export async function initializeQrSession() {
         qrCodeDataUrl = null;
       }
       await persistStatus({ status: qrStatus, qrCodeDataUrl, lastQrAt });
+
+      // --- ANTIGRAVITY FALLBACK ---
+      // Caso o evento `authenticated` ou `ready` parem de funcionar (comum em novas atualizações do WhatsApp Web)
+      try {
+          const page = (qrClient as any).pupPage;
+          if (page && !page.__injectedAuthFallback) {
+              page.__injectedAuthFallback = true;
+              logger.info("[WhatsApp-QR] Inicializando watcher de DOM como fallback...");
+              
+              const checkFallback = setInterval(async () => {
+                  if ((qrStatus as string) === "connected" || !qrClient) {
+                      clearInterval(checkFallback);
+                      return;
+                  }
+                  try {
+                      // Se a URL mudou (ex: erro fatal de login) não vai ter Store
+                      const isAuth = await page.evaluate(() => {
+                          // Se já estiver na tela principal e a lib falhou
+                          if ((window as any).Store && (window as any).Store.Msg) return true;
+                          const el = document.querySelector('[data-testid="chat-list-search"]') || document.querySelector('#pane-side');
+                          return !!el;
+                      });
+
+                      if (isAuth && qrStatus !== "connected") {
+                          logger.info("[WhatsApp-QR] Autenticação detectada via DOM Fallback (WWebJS native tracker failed!)");
+                          clearInterval(checkFallback);
+                          // Força emissão dos eventos que faltaram
+                          qrClient.emit("authenticated", {}); 
+                          setTimeout(() => qrClient.emit("ready"), 1000);
+                      }
+                  } catch (e) {
+                      // silêncio (erros de navigation)
+                  }
+              }, 5000);
+          }
+      } catch (e) {
+          // silêncio
+      }
     });
 
     qrClient.on("authenticated", async (session: any) => {
