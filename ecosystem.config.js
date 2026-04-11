@@ -1,11 +1,11 @@
-// PM2 Ecosystem Configuration
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-module.exports = {
+export default {
   apps: [{
     name: 'ouvidoria-qualital-app',
     script: './dist/index.js',
-    cwd: '/home/ouvidoria/OuvidoriaQualital',
+    cwd: '/home/ubuntu/app/OuvidoriaQualital',
     env_production: {
       NODE_ENV: 'production',
       DATABASE_URL: process.env.DATABASE_URL,
